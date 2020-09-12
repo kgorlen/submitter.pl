@@ -1,0 +1,260 @@
+Return-Path: photochr@alpha.he.net
+Received: from reszmta-ch2-05v.sys.comcast.net (LHLO
+ reszmta-ch2-05v.sys.comcast.net) (69.252.207.69) by
+ resmail-po-630v.sys.comcast.net with LMTP; Thu, 21 Apr 2016 19:00:07 +0000
+ (UTC)
+Received: from resimta-ch2-14v.sys.comcast.net ([69.252.207.14])
+	by comcast with SMTP
+	id tJcoa9uxxbIK4tJpfawq1Y; Thu, 21 Apr 2016 19:00:07 +0000
+Received: from boys2mengirls2women.org ([IPv6:2001:470:0:e7::4a52:2853])
+	by resimta-ch2-14v.sys.comcast.net with comcast
+	id l7061s00Y0JZraW01706Q5; Thu, 21 Apr 2016 19:00:07 +0000
+X-CAA-SPAM: 00000
+X-Authority-Analysis: v=2.1 cv=KcUvylsD c=1 sm=1 tr=0
+ a=qG+T1olPWClWmamG67BhbQ==:17 a=kziv93cY1bsA:10 a=gWPulmgGiAyElbbivz4A:9
+ a=JWdaXGueAAAA:8 a=4dN6FSvgGg2yiBKE6UwA:9 a=QEXdDO2ut3YA:10 a=K2e8g5o2yzUA:10
+ a=Kq3Uml_uAAAA:8 a=e7VR9ajpZ7DC07E4iV0A:9 a=kA9PA7YZbD5JFb5a:21
+ a=T-j1Ub8Xw16sIF20iZsA:9 a=s2CnYiUma8hA9c2O:18 a=KQqxNPgzF0kA:10
+Received: from localhost.localdomain ([74.82.40.2])
+	by boys2mengirls2women.org
+	for <gorlen@comcast.net>; Thu, 21 Apr 2016 12:00:00 -0700
+Content-Type: multipart/alternative; boundary="----------=_1461265200-23690-0"
+Content-Transfer-Encoding: binary
+MIME-Version: 1.0
+X-Mailer: MIME-tools 5.507 (Entity 5.507)
+From: submit@photochrome.org
+To: gorlen@comcast.net
+Subject: Re: test_outlook2010.eml
+Reply-To: support@photochrome.org
+Return-Path: support@photochrome.org
+X-Loop: submit@photochrome.org
+References: <000c01cd5178$df934b30$9eb9e190$@comcast.net>
+In-Reply-To: <000c01cd5178$df934b30$9eb9e190$@comcast.net>
+Sender: photochr <photochr@alpha.he.net>
+
+This is a multi-part message in MIME format...
+
+------------=_1461265200-23690-0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+1 photo(s) attached; 0 submitted, 0 resubmitted, 1 failed, 0 warning(s)
+Please see http://photochrome.org/club-info/submissions for instructions.
+Categories available for 01/01/9999: OS Pic2 TN
+
+OP-Gary Larson-Japanese Tea Garden: ERROR: Invalid category (available categories: OS,Pic2,TN)
+OP-Gary Larson-Japanese Tea Garden: Submission FAILED, please correct errors and resubmit
+
+
+------------=_1461265200-23690-0
+Content-Type: multipart/related; boundary="----------=_1461265200-23690-1"
+Content-Transfer-Encoding: 7bit
+
+This is a multi-part message in MIME format...
+
+------------=_1461265200-23690-1
+Content-Type: text/html; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+<!-- $Header: /home/photochr/perl/src/Photochrome/RCS/acktemplate.html,v 1.11 2012/11/22 17:41:46 photochr Exp $
+
+$Log: acktemplate.html,v $
+Revision 1.11  2012/11/22 17:41:46  photochr
+Replace banquet notice with normal "Event on MM/DD/YYYY" notice.
+
+Revision 1.10  2012/11/15 17:40:08  photochr
+Change event message for banquet.
+
+Revision 1.9  2012/11/08 16:53:37  photochr
+Remove notice of 11/1 meeting change.
+
+Revision 1.8  2012/10/25 05:03:44  photochr
+Add new meeting date announcement.
+
+Revision 1.7  2012/10/24 20:45:10  photochr
+Add RCS Header and Log keywords.
+
+
+//-->
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    <meta http-equiv="content-type" content="text/html;
+      charset=ISO-8859-1">
+    <font face="Helvetica, Arial, sans-serif">1
+      photo(s) attached; 0 submitted, 0
+      resubmitted, 1 failed, 0
+      warning(s).<br>
+      Please see http://photochrome.org/club-info/submissions
+        for instructions.<br><br>
+    </font>
+    <table frame="hsides" rules="rows" border="1" cellpadding="2"
+      cellspacing="2" width="100%">
+      <caption><font face="Helvetica, Arial, sans-serif">Event on 01/01/9999;
+          Available Categories: OS,Pic2,TN<br>
+        </font> </caption><tbody>
+        <tr>
+          <td align="left" valign="middle"><font face="Helvetica, Arial,
+              sans-serif"><img src="cid:f9f5bbb64f489c69cb3c4c17-photochrome.org"></font> </td>
+          <td align="left" valign="middle"><font face="Helvetica, Arial,
+              sans-serif"> Category: ?<br>
+              Photographer: Gary Larson<br>
+              Title: <i>Japanese Tea Garden</i><br>
+              Size: 721x1024 pixels, 83375
+              bytes<br>
+              Attachment name: OP-Gary Larson-Japanese Tea Garden<br>
+              <br>
+              <b>ERROR: Invalid category (available categories: OS,Pic2,TN)<br>Submission FAILED, please correct errors and resubmit</b></font>
+            <font face="Helvetica, Arial, sans-serif"><br>
+            </font> </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <font face="Helvetica, Arial, sans-serif">Reply to this message for assistance.<br></font>
+    <br>
+    <meta http-equiv="content-type" content="text/html;
+      charset=ISO-8859-1">
+    <title></title>
+  </body>
+</html>
+
+------------=_1461265200-23690-1
+Content-Type: image/jpeg
+Content-Disposition: inline
+Content-Transfer-Encoding: base64
+Content-ID: <f9f5bbb64f489c69cb3c4c17-photochrome.org>
+
+/9j/4AAQSkZJRgABAQEAZABkAAD/4QCsRXhpZgAASUkqAAgAAAADADEBAgAX
+AAAAMgAAADIBAgAUAAAASgAAAGmHBAABAAAAXgAAAAAAAABFbGVtZW50cyBP
+cmdhbml6ZXIgOC4wAAAyMDEwOjA4OjE0IDE2OjI0OjM4AAIAA5ACABQAAAB8
+AAAABJACABQAAACQAAAAAAAAADIwMTA6MDQ6MTAgMTI6NDU6MDcAMjAxMDow
+NDoxMCAxMjo0NTowNwD/4Q0qaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4w
+LwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pO
+VGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEv
+IiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA0LjIuMi1jMDYzIDUzLjM2MDIw
+MywgMjAwOC8xMC8wOC0xMDozMzo0MCAgICAgICAgIj4KIDxyZGY6UkRGIHht
+bG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3lu
+dGF4LW5zIyI+CiAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAg
+IHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIgog
+ICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIgog
+ICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8i
+CiAgIGV4aWY6RGF0ZVRpbWVPcmlnaW5hbD0iMjAxMC0wNC0xMFQxMjo0NTow
+Ny0wNzowMCIKICAgZXhpZjpEYXRlVGltZURpZ2l0aXplZD0iMjAxMC0wNC0x
+MFQxMjo0NTowNy0wNzowMCIKICAgZXhpZjpOYXRpdmVEaWdlc3Q9IjM2ODY0
+LDQwOTYwLDQwOTYxLDM3MTIxLDM3MTIyLDQwOTYyLDQwOTYzLDM3NTEwLDQw
+OTY0LDM2ODY3LDM2ODY4LDMzNDM0LDMzNDM3LDM0ODUwLDM0ODUyLDM0ODU1
+LDM0ODU2LDM3Mzc3LDM3Mzc4LDM3Mzc5LDM3MzgwLDM3MzgxLDM3MzgyLDM3
+MzgzLDM3Mzg0LDM3Mzg1LDM3Mzg2LDM3Mzk2LDQxNDgzLDQxNDg0LDQxNDg2
+LDQxNDg3LDQxNDg4LDQxNDkyLDQxNDkzLDQxNDk1LDQxNzI4LDQxNzI5LDQx
+NzMwLDQxOTg1LDQxOTg2LDQxOTg3LDQxOTg4LDQxOTg5LDQxOTkwLDQxOTkx
+LDQxOTkyLDQxOTkzLDQxOTk0LDQxOTk1LDQxOTk2LDQyMDE2LDAsMiw0LDUs
+Niw3LDgsOSwxMCwxMSwxMiwxMywxNCwxNSwxNiwxNywxOCwyMCwyMiwyMywy
+NCwyNSwyNiwyNywyOCwzMDtBNTYxMzMwNTI4QzhBNTBCMTZENkMwMTJBMzhE
+QUNENyIKICAgeG1wOkNyZWF0b3JUb29sPSJFbGVtZW50cyBPcmdhbml6ZXIg
+OC4wIgogICB4bXA6TW9kaWZ5RGF0ZT0iMjAxMC0wOC0xNFQxNjoyNDozOC0w
+NzowMCIKICAgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxMC0wOC0xNFQxNjoyNDoz
+OC0wNzowMCIKICAgdGlmZjpOYXRpdmVEaWdlc3Q9IjI1NiwyNTcsMjU4LDI1
+OSwyNjIsMjc0LDI3NywyODQsNTMwLDUzMSwyODIsMjgzLDI5NiwzMDEsMzE4
+LDMxOSw1MjksNTMyLDMwNiwyNzAsMjcxLDI3MiwzMDUsMzE1LDMzNDMyOzFG
+MzNEQUIyQzJBRjA3Njk0MTk5QkVEN0ZEMEQ4NDJBIi8+CiA8L3JkZjpSREY+
+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tl
+dCBlbmQ9InciPz7/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAm
+JSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8N
+Dx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT3/wAARCABkAEYDASIAAhEBAxEB/8QAGwAAAgMBAQEA
+AAAAAAAAAAAAAAQCBQYBAwf/xAA4EAACAQMDAgMFBQYHAAAAAAABAgMABBEF
+EiETMUFRYQYUInGRMoGhsdEjJFJy4fBCQ2JjksHx/8QAGAEAAwEBAAAAAAAA
+AAAAAAAAAAECAwT/xAAeEQEBAQEAAwEAAwAAAAAAAAAAARECAyExEkFCUf/a
+AAwDAQACEQMRAD8AnJa6JbMJdR0+1dZzwohMW0Dvggjtzu4+XNKSQeyzAGKx
+aWNWAaWK4Zcr23BSc5yRxzwPCoW+sQrbtNHaiXp4lGH3rG2Rl8E5OeATVXfT
+reFLmK0hyx56ZZQG5PIz3PfHpU1Ra+sYpb3p6ZA6HYT0jKZWHOOSB/5TLNDF
+Cts0sfXVyCoPpimYLWaLC3KMN5+yswDRyA9mJ758u3NZ+4v7i4s7uylWPYbo
+ysVXJJ354Pn8WPlU3nV83/VlDFm8h/nFPajDyPlVfctLolnYT7fenc8puCmM
+jBwfuNWTXS39pFcBDGXjBKN3Ws76XOeruT4S0PQl1/XksGmMO6N3DgA8qM45
+q1vfZ9NAnW2EkkjMN7bwOOccY7g4zS3s4EX2iBkxt6Eg5znnA4xzmrXVpmud
+SmLO0gQlFZlxlR2IHgMVf9Wd+qK29lrO5Qde4uY5yoeQLHuC7uQOB5c59aKc
+Fxb2ikMzq52k9NmQ42jHbvmiq9EWikuNPG3aGic7ihA2se2fLHOM0ldXL++W
+3uoQvG+/lV8j+WTxTU7q6lIC0wALA7sN/UVU3KrFcWzA7SfiK7MFSSByD8+9
+GmvLvV5zE+1U6m7LybBgnIPlzzioX2jvpyrqDxsqSsJTx2P8XyPFemm20Tal
+FuTqJFmU55yF8Dn1/I1pNU1Q20Jmuke4R+Bk/wB/3mnn6ns+erOpjOBpleP9
+lHDKzYBdO5P5c1a3mkst6yIQMWxcgDuwxx6d6dgv7PVrQfaxGeVc5AI+IYrm
+n6gbjUJcqWldXMgbts5OP7+dc3k8W2ZXd4vPnPU6n31WStrm4s783FnI0cyI
+xV1GSvrVtbSzXMfWuC5dmzuZdpYfp61D2Zjsm1wxyjpwumFRG3ck4wD5c59B
+8qYi2rvRQwEblADnw48a056t2OTvicyXfbNm9nsi0QjWWVWODIgPwHtjPrkU
+UzPIlpdJeTRq8Tx9IqRkZGCDjzxmitYyw0qwTlAVIcNuBBxz5jyqv9obaKK6
+lZTIOlaJIMuSB8VetnJm8hG4fa86Y1WH3m/njXDF7RFxn+alSM6NOsF9p8O1
+HN5GwZ8dgFyAPSrGZY7aVheGbYB8Ow5DDw47Z9a8dAtwqwtMNl1FDtiPB2nA
+DffgU811dyyND+55XkpMh+o/Sr4+Dqz+HbSGx9zij916VkrohAOGl8hn86Ig
+kGpTNLEy20jlo5ByUHbBAPaq7V7e+ngSZZGlaJx8Ea4VR6AetPRG4k0i6aZX
+ViqHaSCPDJ45qshbcFrYwTzMLBDFFChVJQcSS457+WfrXgV5BHjTtpby2MiT
+RyuqbMsnhkd6rrGZriAO4UHcRhay65kVe7SkdskiGOUB0yCA3hRSq6iyE/At
+FTh7GjFvH/BH/wARUZlitk3mJDzjhQKzcPtVfPzLp1tEP9UjZ+lSn9oJphgx
+xhc5wc1X5rPT7SFH3oxUg5HpVlcXlqZjHqUTRgHMc8YyAPI1lm1OQ/5Ef41q
+ImFzCkrKMMo4xxV8ywautMW3nDrBJ1EZcFgfOkUjujp0i2UvTuAAFd1Ddj4i
+nNFRIZGVEVA3xELil0n6UClnCuznkfjVlVNdXd9ZaO8Vy0Yl6m0lR8WGBJ8f
+SvHSDmyB/wBxv+qW9qb5jd9BdjqCXyO/lj65pCz1t7O36Xu6vhi2d5Hf7qju
+W05XieCfnRSvvT/wD60VP5p68RcRAYYt9K77zCO276UiN3qalu2jgCtEHDdp
+js/51tbCQNp8IQkjvz681896pBxj8K3OhuZNLjyTwi7QfLHf65pw13bTlZkd
+TgIQTVdqWp2mma5pwu5uhboZHchS3wkgDAHc9qbtjvlMR8UYD6VlPbDULa5v
+bY28khlihEU8bR4CMDnIPiDn8KfwV465cWaarL7vepdQnlXRCMeh47j9Krve
+oD/j/A0qZcj+lR3Arz+VTpHRcQ4+3+FFI/CR/Wig0Op4Vwy58c1zYvBxXQqg
+42j60gj7woHY9q3trqns/DBbLa6jHu6KmYSKUw+ADyfvrB7FJIIANTVAD2FO
+XCb6HWtO9/hMeoWu4uAP2g5P6Vm/a2xksNfnLtE8U7GSJopVcFe3geCO3NUx
+GT249K4EHyHzo0wWYeOfSudVs4zx86CBkg4HpiokBu3I86A4Wye/NFSICgZL
+HNFIIjkA9jQzEE0UUBLeQtG89PNFFAGcnn51xiQo58KKKAFJ7VwgDd6UUUBB
+mIH30UUUB//Z
+
+------------=_1461265200-23690-1--
+
+------------=_1461265200-23690-0--

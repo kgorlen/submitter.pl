@@ -1,0 +1,57 @@
+Return-Path: photochr@alpha.he.net
+Received: from reszmta-ch2-07v.sys.comcast.net (LHLO
+ reszmta-ch2-07v.sys.comcast.net) (69.252.207.71) by
+ resmail-po-630v.sys.comcast.net with LMTP; Thu, 21 Apr 2016 19:00:01 +0000
+ (UTC)
+Received: from resimta-ch2-01v.sys.comcast.net ([69.252.207.21])
+	by comcast with SMTP
+	id tJasapXEnPKUStJpZa8oof; Thu, 21 Apr 2016 19:00:01 +0000
+Received: from boys2mengirls2women.org ([IPv6:2001:470:0:e7::4a52:2853])
+	by resimta-ch2-01v.sys.comcast.net with comcast
+	id l7001s01F0JZraW01700Hj; Thu, 21 Apr 2016 19:00:00 +0000
+X-CAA-SPAM: 00000
+X-Authority-Analysis: v=2.1 cv=NuMsCJpJ c=1 sm=1 tr=0
+ a=qG+T1olPWClWmamG67BhbQ==:17 a=kziv93cY1bsA:10 a=gWPulmgGiAyElbbivz4A:9
+ a=q27Ly4UUyr0E7THMYlMA:9 a=QEXdDO2ut3YA:10 a=LbkFkD6f44EE-vThLTkA:9
+ a=_W_S_7VecoQA:10 a=9nLaT_8ITDwA:10
+Received: from localhost.localdomain ([74.82.40.2])
+	by boys2mengirls2women.org
+	for <gorlen@comcast.net>; Thu, 21 Apr 2016 11:59:59 -0700
+Content-Type: multipart/alternative; boundary="----------=_1461265199-23655-0"
+Content-Transfer-Encoding: binary
+MIME-Version: 1.0
+X-Mailer: MIME-tools 5.507 (Entity 5.507)
+From: submit@photochrome.org
+To: gorlen@comcast.net
+Subject: Re: test_nojpeg.eml
+Reply-To: support@photochrome.org
+Return-Path: support@photochrome.org
+X-Loop: submit@photochrome.org
+References: <137764751.247232.1340214418886.JavaMail.root@sz0129a.emeryville.ca.mail.comcast.net>
+In-Reply-To: <137764751.247232.1340214418886.JavaMail.root@sz0129a.emeryville.ca.mail.comcast.net>
+Sender: photochr <photochr@alpha.he.net>
+
+This is a multi-part message in MIME format...
+
+------------=_1461265199-23655-0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+No JPEG attachments
+Reply to this message for assistance.
+
+------------=_1461265199-23655-0
+Content-Type: text/html; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    </head>
+    <body>
+<b>No JPEG attachments</b><br><br>Reply to this message for assistance.<br>    </body>
+</html>
+
+------------=_1461265199-23655-0--

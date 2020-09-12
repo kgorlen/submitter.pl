@@ -1,0 +1,331 @@
+head	1.12;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.12
+date	2017.04.20.20.02.48;	author photochr;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2012.11.22.17.41.46;	author photochr;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2012.11.15.17.40.08;	author photochr;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2012.11.08.16.53.37;	author photochr;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2012.10.25.05.03.44;	author photochr;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2012.10.24.20.45.10;	author photochr;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2012.09.06.22.15.28;	author photochr;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2012.08.20.01.05.09;	author photochr;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2012.08.14.21.22.42;	author photochr;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2012.07.22.20.27.48;	author photochr;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.07.21.03.11.14;	author photochr;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.07.17.18.56.31;	author photochr;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@Use html link tag for link to submission instructions.
+@
+text
+@<!-- $Header: /home/photochr/perl/src/Photochrome/RCS/acktemplate.html,v 1.11 2012/11/22 17:41:46 photochr Exp photochr $
+
+$Log: acktemplate.html,v $
+Revision 1.11  2012/11/22 17:41:46  photochr
+Replace banquet notice with normal "Event on MM/DD/YYYY" notice.
+
+Revision 1.10  2012/11/15 17:40:08  photochr
+Change event message for banquet.
+
+Revision 1.9  2012/11/08 16:53:37  photochr
+Remove notice of 11/1 meeting change.
+
+Revision 1.8  2012/10/25 05:03:44  photochr
+Add new meeting date announcement.
+
+Revision 1.7  2012/10/24 20:45:10  photochr
+Add RCS Header and Log keywords.
+
+
+//-->
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    <meta http-equiv="content-type" content="text/html;
+      charset=ISO-8859-1">
+    <font face="Helvetica, Arial, sans-serif"><code>$AttachCount</code>
+      photo(s) attached; <code>$SubmitCount</code> submitted, <code>$ResubmitCount</code>
+      resubmitted, <code>$FailedCount</code> failed, <code>$WarnCount</code>
+      warning(s).<br>
+      <code>$FailedCount || $WarnCount ? qq[Please see submission instructions
+	&lt;a href="$INSTRUCTIONS"&gt;here&lt;/a&gt;.&lt;br&gt;] : ''</code><br>
+    </font>
+    <table frame="hsides" rules="rows" border="1" cellpadding="2"
+      cellspacing="2" width="100%">
+      <caption><font face="Helvetica, Arial, sans-serif">Event on <code>$EventMMDDYYYY</code>;
+          Available Categories: <code>join(',',@@Categories)</code><br>
+        </font> </caption><tbody>
+        <tr>
+          <td align="left" valign="middle"><font face="Helvetica, Arial,
+              sans-serif"><code>$thumbnail</code></font> </td>
+          <td align="left" valign="middle"><font face="Helvetica, Arial,
+              sans-serif"> Category: <code>$category</code><br>
+              Photographer: <code>encode($artist)</code><br>
+              Title: <i><code>encode($title)</code></i><br>
+              Size: <code>$width</code>x<code>$height</code> pixels, <code>$size</code>
+              bytes<br>
+              Attachment name: <code>encode($n)</code><br>
+              <br>
+              <b><code>join(q(&lt;br&gt;),encode(@@status))</code></b></font>
+            <font face="Helvetica, Arial, sans-serif"><br>
+            </font> </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <font face="Helvetica, Arial, sans-serif">Reply to this message for assistance.<br></font>
+    <br>
+    <meta http-equiv="content-type" content="text/html;
+      charset=ISO-8859-1">
+    <title></title>
+  </body>
+</html>
+@
+
+
+1.11
+log
+@Replace banquet notice with normal "Event on MM/DD/YYYY" notice.
+@
+text
+@d1 1
+a1 1
+<!-- $Header: /home/photochr/perl/src/Photochrome/RCS/acktemplate.html,v 1.10 2012/11/15 17:40:08 photochr Exp photochr $
+d4 3
+d33 2
+a34 2
+      <code>$FailedCount || $WarnCount ? qq[Please see $INSTRUCTIONS
+        for instructions.&lt;br&gt;] : ''</code><br>
+@
+
+
+1.10
+log
+@Change event message for banquet.
+@
+text
+@d1 1
+a1 1
+<!-- $Header: /home/photochr/perl/src/Photochrome/RCS/acktemplate.html,v 1.9 2012/11/08 16:53:37 photochr Exp photochr $
+d4 3
+d35 1
+a35 1
+      <caption><font face="Helvetica, Arial, sans-serif">Banquet on 12/7/2012;
+@
+
+
+1.9
+log
+@Remove notice of 11/1 meeting change.
+@
+text
+@d1 1
+a1 1
+<!-- $Header: /home/photochr/perl/src/Photochrome/RCS/acktemplate.html,v 1.8 2012/10/25 05:03:44 photochr Exp photochr $
+d4 3
+d32 1
+a32 1
+      <caption><font face="Helvetica, Arial, sans-serif">Event on <code>$EventMMDDYYYY</code>;
+@
+
+
+1.8
+log
+@Add new meeting date announcement.
+@
+text
+@d1 1
+a1 1
+<!-- $Header: /home/photochr/perl/src/Photochrome/RCS/acktemplate.html,v 1.7 2012/10/24 20:45:10 photochr Exp photochr $
+d4 3
+a25 3
+        <br>
+        <b>*** NOTE: 11/1 meeting moved to 11/8 ***</b><br>
+        <br>
+@
+
+
+1.7
+log
+@Add RCS Header and Log keywords.
+@
+text
+@d1 5
+a5 1
+<!-- $Header$
+a6 1
+$Log$
+d23 3
+@
+
+
+1.6
+log
+@Include link to submission instructions in reply message if errors or warnings.
+Add "Reply to this message for assistance." to reply message.
+@
+text
+@d1 5
+@
+
+
+1.5
+log
+@Remove signature.
+@
+text
+@d13 2
+a14 1
+      <br>
+d39 2
+@
+
+
+1.4
+log
+@Use $thumbnail instead of thumbnailImg() to insert thumbnail.
+@
+text
+@d37 1
+a37 8
+    <font face="Helvetica, Arial, sans-serif"><br>
+      ---<br>
+      Keith Gorlen<br>
+      (415) 563-3083<br>
+      <a class="moz-txt-link-abbreviated"
+        href="mailto:gorlen@@comcast.net">gorlen@@comcast.net</a></font> <font
+      face="Helvetica, Arial, sans-serif"><br>
+    </font> <br>
+@
+
+
+1.3
+log
+@Use <code> tag instead of <tt> to mark perl code.
+Use thumbnailImg() to insert thumbnail.
+@
+text
+@d22 1
+a22 1
+              sans-serif"><code>thumbnailImg($n)</code></font> </td>
+@
+
+
+1.2
+log
+@Add Attachment name.
+Use new row-specific variables.
+@
+text
+@d3 4
+d9 6
+a14 7
+    <title>$Header: /home/photochr/perl/src/Photochrome/RCS/acktemplate.html,v 1.1 2012/07/17 18:56:31 photochr Exp photochr $</title>
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    <tt>$AttachCount</tt> photos attached; <tt>$SubmitCount</tt>
+    submitted, <tt>$ResubmitCount</tt> resubmitted, <tt>$FailedCount</tt>
+    failed, <tt>$WarnCount</tt> warning(s).<br>
+    <br>
+d17 3
+a19 3
+      <caption>Event on <tt>$EventMMDDYYYY</tt>; Available Categories:
+        <tt>join(',',@@Categories)</tt><br>
+      </caption><tbody>
+d21 13
+a33 10
+          <td align="left" valign="middle">&nbsp;&nbsp;&nbsp; <tt>qq(&lt;img src="cid:$Photos{$n}-&gt;{ThumbnailCid}"&gt;)</tt><br>
+          </td>
+          <td align="left" valign="middle"> Category: <tt>$category</tt><br>
+            Photographer: <tt>encode($artist)</tt><br>
+            Title: <i><tt>encode($title)</tt></i><br>
+            Size: <tt>$width</tt>x<tt>$height</tt> pixels, <tt>$size</tt> bytes<br>
+	    Attachment name: <tt>encode($n)</tt><br>
+	    <br>
+            <b><tt>join(q(&lt;br&gt;),encode(@@status))</tt></b><br>
+          </td>
+d37 11
+a47 6
+    <br>
+    ---<br>
+    Keith Gorlen<br>
+    (415) 563-3083<br>
+    <a class="moz-txt-link-abbreviated" href="mailto:gorlen@@comcast.net">gorlen@@comcast.net</a><br>
+    <br>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+    <title>$Header$</title>
+d23 4
+a26 3
+            Size: <tt>$Photos{$n}-&gt;{ImageWidth}</tt>x<tt>$Photos{$n}-&gt;{ImageHeight}</tt>
+            pixels, <tt>length(${$Photos{$n}-&gt;{JPEG}})</tt> bytes<br>
+            <b><tt>join(q(&lt;br&gt;),encode(@@{$Photos{$n}-&gt;{Status}}))</tt></b><br>
+@

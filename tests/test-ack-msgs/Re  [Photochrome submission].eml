@@ -1,0 +1,52 @@
+Return-Path: <photochr@alpha.he.net>
+Received: from localhost.localdomain ([74.82.40.2])
+	by photochrome.org
+	for <support@photochrome.org>; Thu, 21 Apr 2016 11:59:57 -0700
+Content-Type: multipart/alternative; boundary="----------=_1461265196-23567-0"
+Content-Transfer-Encoding: binary
+MIME-Version: 1.0
+X-Mailer: MIME-tools 5.507 (Entity 5.507)
+From: submit@photochrome.org
+To: support@photochrome.org
+Subject: Re: [Photochrome submission]
+Reply-To: support@photochrome.org
+Return-Path: support@photochrome.org
+X-Loop: submit@photochrome.org
+Sender: photochr <photochr@alpha.he.net>
+
+This is a multi-part message in MIME format...
+
+------------=_1461265196-23567-0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+Photo submission FAILED!
+
+Error details:
+error:    couldn't parse head; error near:
+Delivered-To: photochromeprojectionist@gmail.com
+
+
+Reply to this message for assistance.
+
+------------=_1461265196-23567-0
+Content-Type: text/html; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+<html>
+    <head>
+      <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    </head>
+    <body><b>Photo submission FAILED!</b><br>
+    <br>
+    Error details:<br>
+<pre>error:    couldn&#39;t parse head; error near:
+Delivered-To: photochromeprojectionist@gmail.com
+
+
+</pre><br>Reply to this message for assistance.<br>    </body>
+</html>
+
+------------=_1461265196-23567-0--

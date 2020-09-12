@@ -1,0 +1,254 @@
+Return-Path: photochr@alpha.he.net
+Received: from reszmta-po-06v.sys.comcast.net (LHLO
+ reszmta-po-06v.sys.comcast.net) (96.114.154.198) by
+ resmail-po-630v.sys.comcast.net with LMTP; Thu, 21 Apr 2016 19:00:01 +0000
+ (UTC)
+Received: from resimta-po-16v.sys.comcast.net ([96.114.154.144])
+	by comcast with SMTP
+	id tJBpaXOK4FnxJtJpYaDfFa; Thu, 21 Apr 2016 19:00:01 +0000
+Received: from boys2mengirls2women.org ([IPv6:2001:470:0:e7::4a52:2853])
+	by resimta-po-16v.sys.comcast.net with comcast
+	id l7001s01Z0JZraW01700pz; Thu, 21 Apr 2016 19:00:00 +0000
+X-CAA-SPAM: 00000
+X-Authority-Analysis: v=2.1 cv=Xb90t9N5 c=1 sm=1 tr=0
+ a=qG+T1olPWClWmamG67BhbQ==:17 a=kziv93cY1bsA:10 a=gWPulmgGiAyElbbivz4A:9
+ a=KrsY3B1WrjKPZcBOWmsA:9 a=QEXdDO2ut3YA:10 a=q1ekqVn0TGcA:10 a=25D5ERp5AAAA:8
+ a=e7VR9ajpZ7DC07E4iV0A:9 a=kS2nv0LhhZ3Z3Gz_:21 a=qRHI60D6yofQQnSelRkA:9
+ a=MjGR3I_toNV2rS7K:18 a=KQqxNPgzF0kA:10
+Received: from localhost.localdomain ([74.82.40.2])
+	by boys2mengirls2women.org
+	for <gorlen@comcast.net>; Thu, 21 Apr 2016 11:59:56 -0700
+Content-Type: multipart/alternative; boundary="----------=_1461265196-23550-0"
+Content-Transfer-Encoding: binary
+MIME-Version: 1.0
+X-Mailer: MIME-tools 5.507 (Entity 5.507)
+From: submit@photochrome.org
+To: Sylvia Chiari <gorlen@comcast.net>
+Subject: Re: test_apple_inline.eml
+Reply-To: support@photochrome.org
+Return-Path: support@photochrome.org
+X-Loop: submit@photochrome.org
+References: <EEDEDB02-D739-400A-99E1-CFB21F2A3BD9@comcast.net>
+In-Reply-To: <EEDEDB02-D739-400A-99E1-CFB21F2A3BD9@comcast.net>
+Sender: photochr <photochr@alpha.he.net>
+
+This is a multi-part message in MIME format...
+
+------------=_1461265196-23550-0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+1 photo(s) attached; 1 submitted, 0 resubmitted, 0 failed, 0 warning(s)
+Categories available for 01/01/9999: OS Pic2 TN
+
+TN-Sylvia-Chiari-Retired Fire Engine in pasture: Successfully submitted, file: 8528-TN-Sylvia-Chiari-Retired Fire Engine in pasture.jpg (1024w x 702h pixels, 182749 bytes)
+
+
+------------=_1461265196-23550-0
+Content-Type: multipart/related; boundary="----------=_1461265196-23550-1"
+Content-Transfer-Encoding: 7bit
+
+This is a multi-part message in MIME format...
+
+------------=_1461265196-23550-1
+Content-Type: text/html; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+<!-- $Header: /home/photochr/perl/src/Photochrome/RCS/acktemplate.html,v 1.11 2012/11/22 17:41:46 photochr Exp $
+
+$Log: acktemplate.html,v $
+Revision 1.11  2012/11/22 17:41:46  photochr
+Replace banquet notice with normal "Event on MM/DD/YYYY" notice.
+
+Revision 1.10  2012/11/15 17:40:08  photochr
+Change event message for banquet.
+
+Revision 1.9  2012/11/08 16:53:37  photochr
+Remove notice of 11/1 meeting change.
+
+Revision 1.8  2012/10/25 05:03:44  photochr
+Add new meeting date announcement.
+
+Revision 1.7  2012/10/24 20:45:10  photochr
+Add RCS Header and Log keywords.
+
+
+//-->
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    <meta http-equiv="content-type" content="text/html;
+      charset=ISO-8859-1">
+    <font face="Helvetica, Arial, sans-serif">1
+      photo(s) attached; 1 submitted, 0
+      resubmitted, 0 failed, 0
+      warning(s).<br>
+      <br>
+    </font>
+    <table frame="hsides" rules="rows" border="1" cellpadding="2"
+      cellspacing="2" width="100%">
+      <caption><font face="Helvetica, Arial, sans-serif">Event on 01/01/9999;
+          Available Categories: OS,Pic2,TN<br>
+        </font> </caption><tbody>
+        <tr>
+          <td align="left" valign="middle"><font face="Helvetica, Arial,
+              sans-serif"><img src="cid:8ea5492bfc9df47179556f2c-photochrome.org"></font> </td>
+          <td align="left" valign="middle"><font face="Helvetica, Arial,
+              sans-serif"> Category: TN<br>
+              Photographer: Sylvia<br>
+              Title: <i>Chiari-Retired Fire Engine in pasture</i><br>
+              Size: 1024x702 pixels, 182749
+              bytes<br>
+              Attachment name: TN-Sylvia-Chiari-Retired Fire Engine in pasture<br>
+              <br>
+              <b>Successfully submitted, file: 8528-TN-Sylvia-Chiari-Retired Fire Engine in pasture.jpg</b></font>
+            <font face="Helvetica, Arial, sans-serif"><br>
+            </font> </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <font face="Helvetica, Arial, sans-serif">Reply to this message for assistance.<br></font>
+    <br>
+    <meta http-equiv="content-type" content="text/html;
+      charset=ISO-8859-1">
+    <title></title>
+  </body>
+</html>
+
+------------=_1461265196-23550-1
+Content-Type: image/jpeg
+Content-Disposition: inline
+Content-Transfer-Encoding: base64
+Content-ID: <8ea5492bfc9df47179556f2c-photochrome.org>
+
+/9j/4AAQSkZJRgABAgAASABIAAD/7QAMQWRvYmVfQ00AAf/uAA5BZG9iZQBk
+gAAAAAH/2wCEAAwICAgJCAwJCQwRCwoLERUPDAwPFRgTExUTExgRDAwMDAwM
+EQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwBDQsLDQ4NEA4OEBQODg4U
+FA4ODg4UEQwMDAwMEREMDAwMDAwRDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
+DAwMDP/AABEIAG4AoAMBIgACEQEDEQH/3QAEAAr/xAE/AAABBQEBAQEBAQAA
+AAAAAAADAAECBAUGBwgJCgsBAAEFAQEBAQEBAAAAAAAAAAEAAgMEBQYHCAkK
+CxAAAQQBAwIEAgUHBggFAwwzAQACEQMEIRIxBUFRYRMicYEyBhSRobFCIyQV
+UsFiMzRygtFDByWSU/Dh8WNzNRaisoMmRJNUZEXCo3Q2F9JV4mXys4TD03Xj
+80YnlKSFtJXE1OT0pbXF1eX1VmZ2hpamtsbW5vY3R1dnd4eXp7fH1+f3EQAC
+AgECBAQDBAUGBwcGBTUBAAIRAyExEgRBUWFxIhMFMoGRFKGxQiPBUtHwMyRi
+4XKCkkNTFWNzNPElBhaisoMHJjXC0kSTVKMXZEVVNnRl4vKzhMPTdePzRpSk
+hbSVxNTk9KW1xdXl9VZmdoaWprbG1ub2JzdHV2d3h5ent8f/2gAMAwEAAhED
+EQA/AJbU4auaZ9aMsN2Guqy0SS4yNDq32MLfoo1f1kzi3XHqcex97R5D6Tlf
++8Y+7S9mfZ6DaltWE36z2NYW2UMdbrtLC4N4dtljpd7HbN3vUR9Z8oWbn0V+
+mIBrBIJ+luLbXf8AkPzEvfx9/wAFe1Ps9BCdYTfrU3YN+NFs6w+GxPm3fu2q
+Vf1orn9NjFgEyWvBIADv3gz8/al7uM9fwV7cx0/F3AR3Ut8cLE/50Yes0Wzy
+Iczjz1Tn6zYG1rm1WlxeAWkDRh5s3Bx3O/4JDjx/vJqfZ1yT4qMLLd9ZMENe
+W12OcI2NgCZbMvdJ9LbZ+j/wn76r3fWusAGrG4nf6j/D930/ztqPu4x+kEe3
+M9HchLauad9asoMcNtO/do+HQBp7Azd7v629UMz6y9Ty6jVLKGu3tcKmkS17
+TVtdvL/ote7/AFYmnmIdLK4YZdaezLU21cjX9aOoF1pvdvD6zXW1kNawwGiz
+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
+/9k=
+
+------------=_1461265196-23550-1--
+
+------------=_1461265196-23550-0--

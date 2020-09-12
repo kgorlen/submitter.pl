@@ -1,0 +1,313 @@
+Return-Path: photochr@alpha.he.net
+Received: from reszmta-ch2-04v.sys.comcast.net (LHLO
+ reszmta-ch2-04v.sys.comcast.net) (69.252.207.68) by
+ resmail-po-630v.sys.comcast.net with LMTP; Thu, 21 Apr 2016 19:02:03 +0000
+ (UTC)
+Received: from resimta-ch2-18v.sys.comcast.net ([69.252.207.18])
+	by comcast with SMTP
+	id tJSAavcl9Pxl7tJrXaPMq9; Thu, 21 Apr 2016 19:02:03 +0000
+Received: from boys2mengirls2women.org ([74.82.40.83])
+	by resimta-ch2-18v.sys.comcast.net with comcast
+	id l7001s01P1nf23u01700k9; Thu, 21 Apr 2016 19:00:01 +0000
+X-CAA-SPAM: 00000
+X-Authority-Analysis: v=2.1 cv=XoMHQgx9 c=1 sm=1 tr=0
+ a=yrPHwu8ctbFSHpOf1Et0xQ==:117 a=yrPHwu8ctbFSHpOf1Et0xQ==:17
+ a=L9H7d07YOLsA:10 a=9cW_t1CCXrUA:10 a=s5jvgZ67dGcA:10 a=kziv93cY1bsA:10
+ a=gWPulmgGiAyElbbivz4A:9 a=JWdaXGueAAAA:8 a=rqHtF3LVzGtFlQqUpdgA:9
+ a=QEXdDO2ut3YA:10 a=xQdB8fRqRzQA:10 a=NWVoK91CQyQA:10 a=68u-Az99AAAA:8
+ a=e7VR9ajpZ7DC07E4iV0A:9 a=jU9P9FMI2dtUQsS-:21 a=mGWD4H_uQqNqVAzZ3T4A:9
+ a=yWth_JBkBfhs8kwG:18 a=KQqxNPgzF0kA:10
+Received: from localhost.localdomain ([74.82.40.2])
+	by boys2mengirls2women.org
+	for <gorlen@comcast.net>; Thu, 21 Apr 2016 11:59:58 -0700
+Content-Type: multipart/alternative; boundary="----------=_1461265198-23625-0"
+Content-Transfer-Encoding: binary
+MIME-Version: 1.0
+X-Mailer: MIME-tools 5.507 (Entity 5.507)
+From: submit@photochrome.org
+To: gorlen@comcast.net
+Subject: Re: test_comcast_inline.eml
+Reply-To: support@photochrome.org
+Return-Path: support@photochrome.org
+X-Loop: submit@photochrome.org
+References: <1744904520.700283.1345334337003.JavaMail.root@sz0129a.emeryville.ca.mail.comcast.net>
+In-Reply-To: <1744904520.700283.1345334337003.JavaMail.root@sz0129a.emeryville.ca.mail.comcast.net>
+Sender: photochr <photochr@alpha.he.net>
+
+This is a multi-part message in MIME format...
+
+------------=_1461265198-23625-0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+1 photo(s) attached; 0 submitted, 0 resubmitted, 1 failed, 1 warning(s)
+Please see http://photochrome.org/club-info/submissions for instructions.
+Categories available for 01/01/9999: OS Pic2 TN
+
+golden_gate_bridge_from_crissy_field_keg: ERROR: Invalid attachment name (must be: <Category>-<First Name> <Last Name>-<Title>.jpg)
+golden_gate_bridge_from_crissy_field_keg: WARNING: Long dimension of 800x533 photo less than 1000
+golden_gate_bridge_from_crissy_field_keg: Submission FAILED, please correct errors and resubmit
+
+
+------------=_1461265198-23625-0
+Content-Type: multipart/related; boundary="----------=_1461265198-23625-1"
+Content-Transfer-Encoding: 7bit
+
+This is a multi-part message in MIME format...
+
+------------=_1461265198-23625-1
+Content-Type: text/html; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+<!-- $Header: /home/photochr/perl/src/Photochrome/RCS/acktemplate.html,v 1.11 2012/11/22 17:41:46 photochr Exp $
+
+$Log: acktemplate.html,v $
+Revision 1.11  2012/11/22 17:41:46  photochr
+Replace banquet notice with normal "Event on MM/DD/YYYY" notice.
+
+Revision 1.10  2012/11/15 17:40:08  photochr
+Change event message for banquet.
+
+Revision 1.9  2012/11/08 16:53:37  photochr
+Remove notice of 11/1 meeting change.
+
+Revision 1.8  2012/10/25 05:03:44  photochr
+Add new meeting date announcement.
+
+Revision 1.7  2012/10/24 20:45:10  photochr
+Add RCS Header and Log keywords.
+
+
+//-->
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    <meta http-equiv="content-type" content="text/html;
+      charset=ISO-8859-1">
+    <font face="Helvetica, Arial, sans-serif">1
+      photo(s) attached; 0 submitted, 0
+      resubmitted, 1 failed, 1
+      warning(s).<br>
+      Please see http://photochrome.org/club-info/submissions
+        for instructions.<br><br>
+    </font>
+    <table frame="hsides" rules="rows" border="1" cellpadding="2"
+      cellspacing="2" width="100%">
+      <caption><font face="Helvetica, Arial, sans-serif">Event on 01/01/9999;
+          Available Categories: OS,Pic2,TN<br>
+        </font> </caption><tbody>
+        <tr>
+          <td align="left" valign="middle"><font face="Helvetica, Arial,
+              sans-serif"><img src="cid:cbb5c58a9afc6fdd603fb824-photochrome.org"></font> </td>
+          <td align="left" valign="middle"><font face="Helvetica, Arial,
+              sans-serif"> Category: ?<br>
+              Photographer: ?<br>
+              Title: <i>?</i><br>
+              Size: 800x533 pixels, 113483
+              bytes<br>
+              Attachment name: golden_gate_bridge_from_crissy_field_keg<br>
+              <br>
+              <b>ERROR: Invalid attachment name (must be: &lt;Category&gt;-&lt;First Name&gt; &lt;Last Name&gt;-&lt;Title&gt;.jpg)<br>WARNING: Long dimension of 800x533 photo less than 1000<br>Submission FAILED, please correct errors and resubmit</b></font>
+            <font face="Helvetica, Arial, sans-serif"><br>
+            </font> </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <font face="Helvetica, Arial, sans-serif">Reply to this message for assistance.<br></font>
+    <br>
+    <meta http-equiv="content-type" content="text/html;
+      charset=ISO-8859-1">
+    <title></title>
+  </body>
+</html>
+
+------------=_1461265198-23625-1
+Content-Type: image/jpeg
+Content-Disposition: inline
+Content-Transfer-Encoding: base64
+Content-ID: <cbb5c58a9afc6fdd603fb824-photochrome.org>
+
+/9j/7gAOQWRvYmUAZAAAAAAB/9sAhAAGBAQEBQQGBQUGCQYFBgkLCAYGCAsM
+CgoLCgoMEAwMDAwMDBAMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMAQcH
+Bw0MDRgQEBgUDg4OFBQODg4OFBEMDAwMDBERDAwMDAwMEQwMDAwMDAwMDAwM
+DAwMDAwMDAwMDAwMDAwMDAz/wAARCACrAQADAREAAhEBAxEB/90ABAAg/8QB
+ogAAAAcBAQEBAQAAAAAAAAAABAUDAgYBAAcICQoLAQACAgMBAQEBAQAAAAAA
+AAABAAIDBAUGBwgJCgsQAAIBAwMCBAIGBwMEAgYCcwECAxEEAAUhEjFBUQYT
+YSJxgRQykaEHFbFCI8FS0eEzFmLwJHKC8SVDNFOSorJjc8I1RCeTo7M2F1Rk
+dMPS4ggmgwkKGBmElEVGpLRW01UoGvLj88TU5PRldYWVpbXF1eX1ZnaGlqa2
+xtbm9jdHV2d3h5ent8fX5/c4SFhoeIiYqLjI2Oj4KTlJWWl5iZmpucnZ6fkq
+OkpaanqKmqq6ytrq+hEAAgIBAgMFBQQFBgQIAwNtAQACEQMEIRIxQQVRE2Ei
+BnGBkTKhsfAUwdHhI0IVUmJy8TMkNEOCFpJTJaJjssIHc9I14kSDF1STCAkK
+GBkmNkUaJ2R0VTfyo7PDKCnT4/OElKS0xNTk9GV1hZWltcXV5fVGVmZ2hpam
+tsbW5vZHV2d3h5ent8fX5/c4SFhoeIiYqLjI2Oj4OUlZaXmJmam5ydnp+So6
+SlpqeoqaqrrK2ur6/9oADAMBAAIRAxEAPwCdCA9jiq82zHfY4quW2HcUOKrx
+a+2KqyWvtiqJS223GKqotq9sVXrZ4q2LSnbFW/q2KuNuRira2xxVs23tiq5b
+Udxiqp9WBFAMVW/UiMVXfVqYqvWJR2xVv01xVsQxnvirYtwcVc1riqmbb2xV
+abb2xVY1ufDFVB7f2xVDy2/tiqEltz2GKoSS2fwxVAzWzHquKoR4Qp+ycVQ0
+qV6rir//0OjRpiqukNcVVVtwe2Kqq2oxVWS3IxVVWJvDFVVY/EYqqrD7Yqv9
+EYqtMAxV3ob4q36WKrlgGKqggXFWxAMVXNEMVU2i9sVU/RPbfFWvSrt0OKrx
+BTqK4qqpD7YqvMeKqRj36Yq36IOKrTCPDFVOS3UjpiqGlgFNxiqBlhGKoOWO
+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
+9rFULJWvf8MVQstffFVA/Tiqi/04q//Z
+
+------------=_1461265198-23625-1--
+
+------------=_1461265198-23625-0--

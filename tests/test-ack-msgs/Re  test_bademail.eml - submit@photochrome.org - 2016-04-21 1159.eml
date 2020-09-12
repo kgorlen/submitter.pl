@@ -1,0 +1,67 @@
+Return-Path: photochr@alpha.he.net
+Received: from reszmta-po-01v.sys.comcast.net (LHLO
+ reszmta-po-01v.sys.comcast.net) (96.114.154.193) by
+ resmail-po-630v.sys.comcast.net with LMTP; Thu, 21 Apr 2016 19:00:01 +0000
+ (UTC)
+Received: from resimta-po-14v.sys.comcast.net ([96.114.154.142])
+	by comcast with SMTP
+	id tJVcag2g5ICIytJpZaSARz; Thu, 21 Apr 2016 19:00:01 +0000
+Received: from boys2mengirls2women.org ([IPv6:2001:470:0:e7::4a52:2853])
+	by resimta-po-14v.sys.comcast.net with comcast
+	id l7001s00g0JZraW01700bm; Thu, 21 Apr 2016 19:00:01 +0000
+X-CAA-SPAM: 00000
+X-Authority-Analysis: v=2.1 cv=POzygqeC c=1 sm=1 tr=0
+ a=qG+T1olPWClWmamG67BhbQ==:17 a=kziv93cY1bsA:10 a=gWPulmgGiAyElbbivz4A:9
+ a=Yg2LZlIuqIevDYCLZtgA:9 a=QEXdDO2ut3YA:10 a=TYSv57xLK3kn-RnSwYMA:9
+ a=_W_S_7VecoQA:10 a=yOapHvfurHUA:10
+Received: from localhost.localdomain ([74.82.40.2])
+	by boys2mengirls2women.org
+	for <gorlen@comcast.net>; Thu, 21 Apr 2016 11:59:57 -0700
+Content-Type: multipart/alternative; boundary="----------=_1461265197-23582-0"
+Content-Transfer-Encoding: binary
+MIME-Version: 1.0
+X-Mailer: MIME-tools 5.507 (Entity 5.507)
+From: submit@photochrome.org
+To: gorlen@comcast.net
+Subject: Re: test_bademail.eml
+Reply-To: support@photochrome.org
+Return-Path: support@photochrome.org
+X-Loop: submit@photochrome.org
+References: <137764751.247232.1340214418886.JavaMail.root@sz0129a.emeryville.ca.mail.comcast.net>
+In-Reply-To: <137764751.247232.1340214418886.JavaMail.root@sz0129a.emeryville.ca.mail.comcast.net>
+Sender: photochr <photochr@alpha.he.net>
+
+This is a multi-part message in MIME format...
+
+------------=_1461265197-23582-0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+Photo submission FAILED!
+
+Error details:
+error:    unexpected end of preamble
+
+
+Reply to this message for assistance.
+
+------------=_1461265197-23582-0
+Content-Type: text/html; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+
+<html>
+    <head>
+      <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    </head>
+    <body><b>Photo submission FAILED!</b><br>
+    <br>
+    Error details:<br>
+<pre>error:    unexpected end of preamble
+
+
+</pre><br>Reply to this message for assistance.<br>    </body>
+</html>
+
+------------=_1461265197-23582-0--

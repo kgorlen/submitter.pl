@@ -1,0 +1,174 @@
+# $Header: /home/photochr/src/perl5/Photochrome/RCS/.procmailrc,v 1.22 2020/01/17 21:19:45 photochr Exp $
+
+# $Log: .procmailrc,v $
+# Revision 1.22  2020/01/17 21:19:45  photochr
+# Add danielsarago@sbcglobal.net to -ccack and -replyto.
+# Remove gorlen@comcast.net from -replyto.
+#
+# Revision 1.21  2019/11/26 19:11:39  photochr
+# Change location of test script to $HOME/src/perl/Photochrome/submitter.pl
+#
+# Revision 1.20  2019/09/04 18:23:23  photochr
+# Summary: Change location of test script to $HOME/src/perl/Photochrome/submitter.pl; remove -replyto AHealdSF@outlook.com.
+#
+# Revision 1.19  2017/12/14 20:32:03  photochr
+# Run submitter.pl from $HOME/bin.
+#
+# Revision 1.18  2017/12/14 20:02:37  photochr
+# Change PERL5LIB to $HOME/lib/perl5.
+#
+# Revision 1.17  2016/10/06 20:36:56  photochr
+# Correct spam filter to include tab characters in whitespace ($SPCNL).
+#
+# Revision 1.16  2016/09/06 23:17:56  photochr
+# Modify attachment filter rule with \<*$ as per [HE#3130475].
+#
+# Revision 1.15  2016/05/14 16:53:46  photochr
+# Add ;? to attachment filter rule as per [HE#3130475].
+#
+# Revision 1.14  2016/05/05 18:32:27  photochr
+# Improve spam filtering.
+#
+# Revision 1.13  2016/04/07 16:30:18  photochr
+# Change AHealdSF@aol.com to AHealdSF@outlook.com.
+#
+# Revision 1.12  2016/03/31 17:06:52  photochr
+# Remove -ccack AHealdSF@aol.com from all rules.
+#
+# Revision 1.11  2014/10/05 19:09:49  photochr
+# Add -debug and redirect STDERR to ~/submitter.log in submit@photochrome.org recipe.
+#
+# Revision 1.10  2014/08/18 01:33:22  photochr
+# Set SMTPHOSTS.
+#
+# Revision 1.9  2014/06/24 16:14:40  photochr
+# Change "banquet2013" to "banquet" and "cyberfest2013" to "imagefest".
+#
+# Revision 1.8  2013/10/19 19:13:24  photochr
+# Add configuration for banquet2013@photochrome.org.
+#
+# Revision 1.7  2013/09/06 17:54:20  photochr
+# Add configuration for cyberfest2013@photochrome.org.
+#
+# Revision 1.6  2013/08/29 03:42:20  photochr
+# Add -ccack and -replyto AHealdSF@aol.com.
+#
+# Revision 1.5  2013/08/09 01:28:03  photochr
+# Remove -ccack artbyalice2000@yahoo.com for projectionist@photochrome.org.
+#
+# Revision 1.4  2013/06/01 17:10:58  photochr
+# Add -ccack artbyalice2000@yahoo.com for projectionist@photochrome.org.
+# Correct projectionist@photochrome.org X-Loop.
+#
+# Revision 1.3  2012/11/22 17:37:21  photochr
+# Reenable shuffle.
+#
+# Revision 1.2  2012/11/15 17:38:38  photochr
+# Set -noshuffle for banquet show submissions.
+#
+# Revision 1.1  2012/10/24 20:37:08  photochr
+# Initial revision
+#
+
+PATH=~/bin:/usr/bin:/usr/local/bin
+MAILDIR=/var/spool/mail/photochrome.org
+SMTPHOSTS=photochrome.org
+LOGFILE=$HOME/.procmail.log
+VERBOSE=yes
+COMSAT=no
+PERL5LIB=$HOME/lib/perl5
+#SENDMAILFLAGS=-i
+
+WSPC   = " 	"       # whitespace = space + tab
+SPC    = "[$WSPC]"      # regexp whitespace
+NSPC  = "[^$WSPC]"      # negation of whitespace
+SPCNL = "($SPC|$)"      # space + tab + newline 
+
+:0fw
+* < 60000
+| /usr/bin/spamc
+
+:0e
+{
+    EXITCODE=77
+}
+
+ :0:
+* ^X-Spam-Status: Yes
+$DEFAULT/.Spam/
+
+:0B
+* B ?? ^(Content-Disposition:[  ]*attachment;)?$SPCNL*(file)?name="?.*\.(asd|bat|chm|cmd|com|dll|exe|hlp|hta|js|jse|lnk|ocx|pif|scr|shb|shm|shs|vb|vbe|vbs|vbx|vxd|docm|dotm|xlsm|xlsb|pptm|ppsm|wsf|wsh|zip|ace|rar|jar|cab|docm|rtf)\<*$
+/dev/null
+
+:0
+* ^(To|Cc|X-Forwarded-To):.*submit@photochrome.org
+{
+        :0
+	* !^FROM_DAEMON
+	* !^X-Loop: submit@photochrome.org
+	{
+		:0 wc
+	        | $HOME/src/perl5/Photochrome/submitter.pl -submitdir $HOME/submit-test -user submit -debug 2>>$HOME/submitter.log
+
+		:0 e
+		$HOME/submit-test/FAILED
+	}
+
+	:0
+	/dev/null
+}
+
+:0
+* ^(To|Cc|X-Forwarded-To):.*projectionist@photochrome.org
+{
+        :0
+	* !^FROM_DAEMON
+	* !^X-Loop: projectionist@photochrome.org
+	{
+		:0 wc
+	        | $HOME/bin/submitter.pl -user projectionist -ccack gorlen@comcast.net -ccack danielsarago@sbcglobal.net -replyto danielsarago@sbcglobal.net
+
+		:0 e
+		failures/
+	}
+
+	:0
+	/dev/null
+}
+
+:0
+* ^(To|Cc|X-Forwarded-To):.*imagefest@photochrome.org
+{
+        :0
+	* !^FROM_DAEMON
+	* !^X-Loop: imagefest@photochrome.org
+	{
+		:0 wc
+	        | $HOME/bin/submitter.pl -submitdir $HOME/imagefest -user imagefest -noshuffle -ccack gorlen@comcast.net -ccack danielsarago@sbcglobal.net -replyto danielsarago@sbcglobal.net
+
+		:0 e
+		failures/
+	}
+
+	:0
+	/dev/null
+}
+
+:0
+* ^(To|Cc|X-Forwarded-To):.*banquet@photochrome.org
+{
+        :0
+	* !^FROM_DAEMON
+	* !^X-Loop: banquet@photochrome.org
+	{
+		:0 wc
+	        | $HOME/bin/submitter.pl -submitdir $HOME/banquet -user banquet -noshuffle -ccack gorlen@comcast.net -ccack danielsarago@sbcglobal.net -replyto danielsarago@sbcglobal.net
+
+		:0 e
+		failures/
+	}
+
+	:0
+	/dev/null
+}

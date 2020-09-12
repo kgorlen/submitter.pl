@@ -1,0 +1,3152 @@
+head	1.31;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.31
+date	2017.12.16.21.57.39;	author photochr;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2017.04.17.19.48.30;	author photochr;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2016.10.08.01.09.34;	author photochr;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2016.10.07.16.17.12;	author photochr;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2016.04.19.23.26.44;	author photochr;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2016.04.19.18.06.04;	author photochr;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2016.04.17.20.59.20;	author photochr;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2014.12.13.02.38.40;	author photochr;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2014.10.05.19.06.37;	author photochr;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2014.08.19.18.19.03;	author photochr;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2014.08.18.01.30.06;	author photochr;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2014.06.07.21.31.25;	author photochr;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2013.12.29.01.48.34;	author photochr;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2013.06.01.17.11.28;	author photochr;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2013.02.15.21.44.34;	author photochr;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2012.11.18.21.26.57;	author photochr;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2012.10.19.18.19.42;	author photochr;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2012.10.01.19.52.58;	author photochr;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2012.09.23.22.14.50;	author photochr;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2012.09.22.22.27.16;	author photochr;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2012.09.09.16.59.35;	author photochr;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2012.09.06.22.14.18;	author photochr;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2012.08.20.01.24.32;	author photochr;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2012.08.14.21.20.57;	author photochr;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2012.07.22.20.24.04;	author photochr;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2012.07.21.18.49.02;	author photochr;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2012.07.16.16.17.43;	author photochr;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2012.06.30.23.10.36;	author photochr;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2012.06.20.20.47.50;	author photochr;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.06.14.20.22.12;	author photochr;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.06.13.05.09.27;	author photochr;	state Exp;
+branches;
+next	;
+
+
+desc
+@Email auto-responder for submitting photos to the Photochrome Camera Club
+@
+
+
+1.31
+log
+@Implement narrow() to convert code points over 0xFF to text in ack
+email text/plain alternative.
+Prevent dieHandler() from calling reply() if reply() has died.
+Make warnings fatal with stack trace if debugging.
+Print ack email text/plain and text/html alternatives if debugging.
+Correct typos in documentation.
+@
+text
+@#!/usr/bin/perl -w
+
+#
+# submitter.pl -- Email autoresponder to submit photos to the Photochrome Camera Club of SF
+#
+# $Header: /home/photochr/src/perl5/Photochrome/RCS/submitter.pl,v 1.30 2017/04/17 19:48:30 photochr Exp photochr $
+#
+# Author:
+#   Keith Gorlen
+#   2335 Jones Street
+#   San Francisco CA 94133-2209
+#   Email: gorlen@@comcast.net
+#
+#
+# $Log: submitter.pl,v $
+# Revision 1.30  2017/04/17 19:48:30  photochr
+# Correct link to submission instructions.
+#
+# Revision 1.29  2016/10/08 01:09:34  photochr
+# Set Host to 'localhost' in smtpsend()--causes use of dedicated IP
+# when sending email to help avoid having messages blocked as spam.
+#
+# Revision 1.28  2016/10/07 16:17:12  photochr
+# Set "Hello" and "MailFrom" fields in smtpsend() to help avoid
+# having messages blocked as spam.
+#
+# Revision 1.27  2016/04/19 23:26:44  photochr
+# Remove unecessary utf8::decode() of recommended_filename.
+# Apply encode_utf8() to image file name.
+#
+# Revision 1.26  2016/04/19 18:06:04  photochr
+# Set utf8 mode on STDERR to suppress wide character warnings for
+# attachment names.
+#
+# Revision 1.25  2016/04/17 20:59:20  photochr
+# - Apply encode_utf8() to md5_hex() input to avoid "Wide character in subroutine entry" error in hash().
+# - Add recommended_name debug output.
+#
+# Revision 1.24  2014/12/13 02:38:40  photochr
+# Overhaul error handling to send error replies.
+# Correct handling of UTF-8 attachment filenames.
+# Attach "missing image file" thumbnail if no/bad jpeg image submitted.
+# Use File::Slurp for jpeg I/O.
+# Set Disposition => 'inline' in thumbnail parts (though does not appear to make a difference).
+#
+# Revision 1.23  2014/10/05 19:06:37  photochr
+# Remove $ackEntity->print(\*STDERR) -- duplicates $ackEntity->smtpsend(Debug=>$DebugOpt) output.
+#
+# Revision 1.22  2014/08/19 18:19:03  photochr
+# Move SMTPHOSTS debug.
+#
+# Revision 1.21  2014/08/18 01:30:06  photochr
+# Print SMTPHOSTS for debugging.
+#
+# Revision 1.20  2014/06/07 21:31:25  photochr
+# Make thumbnail from full-size JPEG if embedded thumbnail missing.
+#
+# Revision 1.19  2013/12/29 01:48:34  photochr
+# Remove code to remove UTF enconding tag (unnecessary).
+#
+# Revision 1.18  2013/06/01 17:11:28  photochr
+# Add -replyto to USAGE.
+#
+# Revision 1.17  2013/02/15 21:44:34  photochr
+# Map characters allowed in Mac/Unix filenames but disallowed in Windows to ^.
+#
+# Revision 1.16  2012/11/18 21:26:57  photochr
+# Correct $FILENAME_RE to restrict category to word characters.
+#
+# Revision 1.15  2012/10/19 18:19:42  photochr
+# Remove multiple .jpg/.jpeg extensions from attachement names.
+#
+# Revision 1.14  2012/10/01 19:52:58  photochr
+# Remove -inline option.
+# Process inline JPEGs if no JPEG attachments.
+# Default width and height in evaluate().
+# Update .procmailrc example.
+#
+# Revision 1.13  2012/09/23 22:14:50  photochr
+# Add "submitter:" and submitter email address to die messages so they
+# appear in .procmail.log.
+# Correct removal of leading/trailing whitespace from attachment name.
+# Die if parse errors, no JPEG attachments, or submissions failures to
+# enable procmail to save email message in these cases.
+#
+# Revision 1.12  2012/09/22 22:27:16  photochr
+# Change hash range from 0000-9972 to 0001-9973.
+# Change all filename and category warnings to fatal errors.
+# Add "Submisssion FAILED" message.
+# Add "Reply to this message for assistance" message.
+# Exit 1 if no attachments.
+#
+# Revision 1.11  2012/09/09 16:59:35  photochr
+# Improve hash() function: include least significant eight hex digits of md5,
+# change modulus from 10000 to 9973 (largest prime <10000).
+#
+# Revision 1.10  2012/09/06 22:14:18  photochr
+# Process received Entity as part if no other parts.
+# Process sub-parts if X-Mailer = Apple Mail.
+# Include link to submission instructions in reply message if errors or warnings.
+# Add "Reply to this message for assistance." to reply message.
+#
+# Revision 1.9  2012/08/20 01:24:32  photochr
+# Implement Reply-To header field in acknowledgement email and -replyto command line option.
+# Process inline JPEG photos, but keep disabled using new -inline command line option default.
+# Only process parts with content-type image/jpeg, image/jpg, or application/octet-stream
+# to avoid processing e.g. application/applefile content.
+# Set reply To field to $SUPPORT_EMAIL if From undefined, e.g. due to parse failure.
+# Set Return-Path header field in acknowledgement email to $SUPPORT_EMAIL for receipt of
+# "bounced" email.
+# Remove signature from plain/text alternative--not needed with Reply-To.
+# Update documentation.
+#
+# Revision 1.8  2012/08/14 21:20:57  photochr
+# Change thumbnailImg() to $thumbnail html template local variable.
+# Check email parser results; reply with parser messages if error.
+# Generate correct reply header if parse failure.
+#
+# Revision 1.7  2012/07/22 20:24:04  photochr
+# Implement thumbnailImg() for use in acktemplate.html to avoid
+# conversion of "cid:" to a link when edited in Thunderbird.
+# Use html <code> tag instead of <tt> to denote perl code in
+# acktemplate.html.
+# Remove leading/trailing whitespace from attachment base name.
+# Update documentation.
+#
+# Revision 1.6  2012/07/21 18:49:02  photochr
+# Add -[no]event and -[no]shuffle options.
+# Unimplement CCACK environment variable.
+# Add hash() to suppress portability warnings.
+# Implement additional row-specific local variables in evaluate().
+# Remove UTF encoding tag from attachement name.
+# Compress whitespace and remove .jpg/.jpeg extension from attachement name.
+# Use barewords in hash element references.
+# Use attachment name as %Photos key instead of filename.
+# Correct category validation logic.
+# Add filename to success status messages.
+# Complete documentation.
+#
+# Revision 1.5  2012/07/16 16:17:43  photochr
+# Implement -domain and -user options.
+# Warn if long edge less than minimum.
+# Accept submission of N of M photo sequences.
+# Prefix filenames with 4-digit hash to shuffle photos.
+# Implement warning messages.
+# Support array argument/return values in encode().
+# Support optional filename argument in evaluate(); eliminate evalRow().
+# Replace decode hex chars and deref operator fix with decode_entities in evaluate().
+# Change invalid file name to warning.
+# Change invalid category to warning if only one category available for event.
+#
+# Revision 1.4  2012/06/30 23:10:36  photochr
+# Remove whitespace around -'s in filename.
+# Fix format of template evaluation debug printout.
+# Check for missing future event subdirectory.
+# Accept attachments of any type with .jpg filename.
+# Overide or default missing category when only one category available.
+#
+# Revision 1.3  2012/06/20 20:47:50  photochr
+# Add text/html part to ack message.
+# Simplify text/plain ack message.
+#
+# Revision 1.2  2012/06/14 20:22:12  photochr
+# Implement -ccack option.
+# Change debug separator from --- to ***.
+# Add summary line to ack email.
+#
+# Revision 1.1  2012/06/13 05:09:27  photochr
+# Initial revision
+#
+#
+
+use FindBin;
+use File::Slurp;
+use Digest::MD5 qw(md5_hex);
+use MIME::Parser;
+use HTML::Entities;
+use Encode qw(decode decode_utf8 encode_utf8);
+use Getopt::Long;
+use Time::localtime;
+use Image::ExifTool;
+use Image::Magick;
+use Carp qw{cluck};
+
+$VERSION = sprintf "%d.%03d", q$Revision: 1.30 $ =~ /(\d+)\.(\d+)/g;
+
+use strict;
+use warnings;
+
+#
+# Global constants
+#
+
+my $USAGE = "USAGE: submitter.pl [ -domain <name> ] [ -user <name> ] [ -submitdir <directory> ]
+                [ -event <yyyy-mm-dd> ] [ -ccack <address> ] [ -replyto <address> ]
+                [ -[no]store ] [ -[no]acknowledge ] [ -[no]shuffle ] [ -[no]debug ] [ email ]\n";
+
+my $REV = substr(q$Revision: 1.30 $, 10);
+
+my $MAXLONGEDGE = 1024;		# Maximum long edge of photo in pixels
+my $MINLONGEDGE = 1000;		# Minimum long edge of photo in pixels
+my $FILENAME_RE = qr/^\s*(\w+)\s*-\s*([^-]+?)\s*-\s*(.+?)\s*(-\s*[1-9]\s*of\s*[1-9])?$/i; # Valid attached file name RE
+my $SUPPORT_EMAIL = 'support@@photochrome.org';
+my $INSTRUCTIONS = 'http://photochrome.org/members-info/submission-instructions'; # Link to submission instructions
+my $MISSINGFILE = $FindBin::Bin.'/missing-image.jpg';	   # Missing file icon
+
+#
+# Initialize global variables
+#
+
+my $SubmitDir = "$ENV{HOME}/submissions"; # Top-level directory to store submitted photos
+my $UserOpt =  'submit';	# Autoresponder email account name
+my $DomainOpt = 'photochrome.org';	# Domain name
+my $EventDateOpt;		# Override next event date
+my @@CcAcksOpt = ();		# Email addresses for acknowledgement Cc:
+my @@ReplyToOpt = ($SUPPORT_EMAIL);# Email addresses for Reply-To
+my $StoreOpt = 1;		# Store photos in directory
+my $AckOpt = 1;			# Send acknowledgement email
+my $ShuffleOpt = 1;		# Prefix filenames with hash to shuffle when sorted
+my $DebugOpt = 0;		# Enable debugging
+my $Replying = 0;		# Set while executing reply() to disable call from dieHandler()
+my $Inline = 0;			# Process inline photos
+my $EventMMDDYYYY = '?';	# Event date MM/DD/YYYY
+my $SubmitterEmail = '?';	# Submitter email address
+my $AckEntity;			# MIME::Entity for acknowledgement email
+my $AttachCount = 0;		# Count of files attached
+my $SubmitCount = 0;		# Count of photos successfully submitted
+my $ResubmitCount = 0;		# Count of photos successfully resubmitted
+my $WarnCount = 0;		# Count of warnings
+my $FailedCount = 0;		# Count of photos failed submissions
+my @@Categories;			# Categories available for event
+my %Photos;			# $Photos{attachment-name} = \(
+				#	JPEG => jpeg ref
+				#	Category => category to which submitted
+				# 	ThumbnailCid => unique content ID
+				#	Status => [error/warning descriptions]
+				# 	ImageWidth => pixels
+				# 	ImageHeight => pixels
+				# 	ImageSize => WxH
+				# 	ThambnailImage => jpeg thumbnail
+				# )
+
+umask 0077;			# Default access only to file/directory owner
+binmode(STDERR, ":utf8");       # Attachment names may be UTF-8
+STDERR->autoflush(1);
+
+#
+# cid -- Generate unique content ID
+#
+
+sub cid {
+    return substr(md5_hex(time().$AttachCount),0,24)."-$DomainOpt";
+}
+
+#
+# hash -- Generate 4-digit hash prefix for shuffling photos
+#
+
+sub hash {
+    no warnings; # suppress "Hexadecimal number > 0xffffffff non-portable" warning from hex()
+    my $md5 = md5_hex(map encode_utf8($_), @@_);
+    return sprintf '%04u', (hex(substr($md5,0,16)) ^ hex(substr($md5,16,16))) % 9973 + 1;
+}
+
+#
+# Convert Unicode to text
+#
+
+sub narrow {
+    my @@str = @@_;
+
+    foreach my $s (@@str) {
+	$s = join("",
+	     map { $_ > 255                    # if wide character...
+		       ? sprintf("\\x{%04X}", $_)  # \x{...}
+		       : chr($_) =~ /[[:cntrl:]]/  # else if control character...
+		       ? sprintf("\\x%02X", $_)  # \x..
+		       : chr($_)		# else as themselves
+	     } unpack("W*", $s));           # unpack Unicode characters
+    }
+
+    return wantarray ? @@str : $str[0];
+} 
+
+#
+# encode -- encode unsafe html characters
+#
+
+sub encode {
+    my @@safe = map(encode_entities($_), @@_);
+    return wantarray ? @@safe : $safe[0];
+}
+
+#
+# evaluate -- evaluate <code>expr</code> expressions in html template
+#
+
+sub evaluate {
+    my $template = shift;	# html template
+    my $n = shift || '';	# Optional photo name
+
+    my ($category, $artist, $title, $sequence, $width, $height, $size, $thumbnail, @@status);
+
+    if ($n) {
+	($category, $artist, $title, $sequence) = ($n =~ $FILENAME_RE);	
+	$category = $Photos{$n}->{Category} || '?';
+	$artist ||= '?';
+	$sequence ||= '';
+	$title ||= '?';
+	$title .= $sequence;
+	$width = $Photos{$n}->{ImageWidth} || '?';
+	$height = $Photos{$n}->{ImageHeight} || '?';
+	$size = length(${$Photos{$n}->{JPEG}});
+	$thumbnail = qq(<img src="cid:$Photos{$n}->{ThumbnailCid}">);
+	@@status = @@{$Photos{$n}->{Status}};
+    }
+
+    if ($DebugOpt) {
+	$_ = $template;
+	while (s/<code>(.+?)<\/code>/$1/s) {
+	    print STDERR decode_entities($1), ": ", eval decode_entities($1), "\n";
+	}
+	print STDERR "\n***\n";
+    }
+
+    $template =~ s/<code>(.+?)<\/code>/decode_entities($1)/eesg;
+    return $template;
+}
+
+#
+# Send reply email
+#
+
+sub reply {
+    $Replying = 1;
+
+    if ($DebugOpt) {
+	$AckEntity->print(\*STDERR) unless $AckOpt;
+	print STDERR ">>> SMTPHOSTS=", $ENV{SMTPHOSTS} || '';
+	print STDERR "\n***\n";
+    }
+
+    $AckEntity->smtpsend(
+	Debug=>$DebugOpt,
+	Host=>'localhost',
+	Hello=>$ENV{SMTPHOSTS},
+	MailFrom=>"$UserOpt\@@$DomainOpt"
+	) or die "smtpsend FAILED: $!, stopped" if $AckOpt;
+
+    $Replying = 0;
+}
+
+#
+# Handle die exceptions
+#
+
+sub dieHandler {
+    my ($msg) = @@_;	# die message text
+
+    die "submitter $SubmitterEmail: ", @@_
+	if !$AckEntity || $Replying; # Reply to email not possible
+
+    $msg =~ s/^\s*(.*?)\s*(, stopped at .* line \d+\.)?$/$1/i;
+
+# Plain text part
+
+    $AckEntity->attach(Type => 'text/plain; charset=utf-8',
+		       Encoding => '7bit',
+		       Data => $msg . "\nReply to this message for assistance.\n");
+
+# HTML part
+
+    my $ackHTML = <<HTML;
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    </head>
+    <body>
+HTML
+
+    $ackHTML .= "<b>$msg</b><br><br>Reply to this message for assistance.<br>";
+
+    $ackHTML .= <<HTML;
+    </body>
+</html>
+HTML
+
+    $AckEntity->attach(Type => 'text/html; charset=utf-8',
+		      Encoding => '7bit',
+		      Data => $ackHTML);
+    reply;
+
+    die "submitter $SubmitterEmail: ", @@_;
+}
+
+$SIG{__DIE__} = \&dieHandler;
+
+# Get options
+
+GetOptions("submitdir=s",	\$SubmitDir,
+	   "user=s",		\$UserOpt,
+	   "domain=s",		\$DomainOpt,
+	   "event=s",		\$EventDateOpt,
+	   "ccack=s",		\@@CcAcksOpt,
+	   "replyto=s",		\@@ReplyToOpt,
+	   "acknowledge!",	\$AckOpt,
+	   "shuffle!",		\$ShuffleOpt,
+	   "store!",		\$StoreOpt,
+	   "debug!",		\$DebugOpt,
+	   )
+    or die "submitter: $USAGE";
+
+# Make warnings fatal with stack trace if debugging
+
+$SIG{__WARN__} = sub {
+    cluck "warn handler: ", @@_;
+} if $DebugOpt;
+
+# Create parser and set parsing options:
+
+my $parser = new MIME::Parser;
+$parser->output_to_core(1);
+
+# Parse received message
+
+my $RcvdEntity = $parser->parse(\*STDIN) or die "submitter: email message parse FAILED, stopped";
+my $ParseResults = $parser->results;
+
+if ($DebugOpt) {
+    if ($ParseResults->msgs) {
+	print STDERR join("\n", $ParseResults->msgs), "\n--\n";
+    }
+
+    $RcvdEntity->dump_skeleton(\*STDERR);
+    print STDERR "\n***\n";
+}
+
+$SubmitterEmail = $RcvdEntity->head->get('From') || '?';
+$SubmitterEmail =~ s/^[\s\n]*(.*?)[\s\n]*$/$1/; # remove leading/trailing whitespace/newlines
+
+# Build acknowledge message header
+
+my @@header = (Type => 'multipart/alternative',
+	      From => "$UserOpt\@@$DomainOpt",
+	      To => $RcvdEntity->head->get('From') || join(',', @@ReplyToOpt),
+	      Subject => "Re: " . ($RcvdEntity->head->get('Subject') || "[Photochrome submission]"),
+	      'Reply-To' => join(',', @@ReplyToOpt),
+	      'Return-Path' => $SUPPORT_EMAIL,
+	      'X-Loop' => "$UserOpt\@@$DomainOpt",
+	      );
+
+if ($_ = $RcvdEntity->head->get('Message-ID')) {
+    push @@header, 'References', $_;
+    push @@header, 'In-Reply-To:', $_;
+}
+
+push(@@header, 'CC', join(',', @@CcAcksOpt)) if @@CcAcksOpt;
+
+$AckEntity = new MIME::Entity->build(@@header);
+
+# Process parser errors
+
+if ($ParseResults->errors) {
+    my $ackText = "Photo submission FAILED!\n\n";
+    $ackText .= "Error details:\n" . join("\n", $ParseResults->msgs) . "\n";
+    $ackText .= "Reply to this message for assistance.\n";
+
+    $AckEntity->attach(Type => 'text/plain; charset=utf-8',
+		       Encoding => '7bit',
+		       Data => $ackText);
+
+    my $ackHTML = <<HTML;
+<html>
+    <head>
+      <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    </head>
+    <body><b>Photo submission FAILED!</b><br>
+    <br>
+    Error details:<br>
+HTML
+  
+    $ackHTML .= '<pre>' . join("\n",encode($ParseResults->msgs)) . "\n" . '</pre>';
+    $ackHTML .= "<br>Reply to this message for assistance.<br>";
+
+    $ackHTML .= <<HTML;
+    </body>
+</html>
+HTML
+
+    $AckEntity->attach(Type => 'text/html; charset=utf-8',
+		      Encoding => '7bit',
+		      Data => $ackHTML);
+    reply;		# Send email parse error details
+
+    print STDERR "submitter $SubmitterEmail: Email parse errors\n";
+    exit 1;
+}
+
+# Check for missing image data icon file
+
+my $MissingThumb;		# Missing image data icon
+die "$MISSINGFILE missing or unreadable, stopped"
+    unless -r $MISSINGFILE;
+
+# Find directory for next event date
+
+opendir(my $dh, $SubmitDir)
+    or die "opendir($SubmitDir) FAILED: $!, stopped";
+chdir $SubmitDir or die "chdir($SubmitDir) FAILED: $!, stopped";
+
+my $now = localtime;
+my $nowYYYYMMDD = sprintf "%04d-%02d-%02d", $now->year()+1900, $now->mon+1, $now->mday;
+my ($eventYYYYMMDD) = $EventDateOpt ||
+    sort map( ($nowYYYYMMDD lt $_ ? ($_) : ()),
+	      grep { /^\d\d\d\d-\d\d-\d\d$/ && -d $_ } readdir($dh));
+closedir $dh;
+
+die "No future events scheduled [$SubmitDir], stopped" unless $eventYYYYMMDD;
+
+$eventYYYYMMDD =~ /^(\d\d\d\d)-(\d\d)-(\d\d)$/;
+$EventMMDDYYYY = "$2/$3/$1";
+
+# Read names of category subdirectories
+
+opendir($dh, $eventYYYYMMDD)
+    or die "opendir($SubmitDir/$eventYYYYMMDD) FAILED: $!, stopped";
+chdir "$SubmitDir/$eventYYYYMMDD" or die "chdir($SubmitDir/$eventYYYYMMDD) FAILED: $!, stopped";
+
+@@Categories = grep { !/^\./ && -d $_ } readdir($dh);
+closedir $dh;
+
+die "No category subdirectories in $SubmitDir/$eventYYYYMMDD, stopped"
+    unless @@Categories;
+
+print STDERR "Categories in $SubmitDir/$eventYYYYMMDD: ", join(' ', sort @@Categories), "\n***\n"
+    if $DebugOpt;
+
+# Set options for reading EXIF
+
+my $exifTool = new Image::ExifTool;
+$exifTool->Options(Duplicates => 0);
+
+
+#
+# Process jpeg image attachments
+#
+
+sub processParts {
+    my $n;			# current attachment name
+    my $errors;			# number of errors for current attachment
+
+    foreach my $part (@@_) {
+	$errors = 0;
+
+	$n = $part->head->recommended_filename || '';
+	print STDERR ">>> recommended_filename: $n", utf8::is_utf8($n) ? " (UTF-8)\n":"\n"
+	    if $DebugOpt;
+
+	if ($n =~ /=\?.+\?\w+\?.*\?=/) {
+	    $n = Encode::decode('MIME-Header', $n);
+	}
+
+	print STDERR ">>> Attachment name: $n", utf8::is_utf8($n) ? " (UTF-8)\n":"\n"
+	    if $DebugOpt;
+
+	unless ($n =~ /\.jpe?g$/i &&
+		$part->head->mime_type =~ /^image\/jpe?g$|^application\/octet-stream$/i
+		) {
+	    processParts($part->parts) if $Inline;	# process sub-parts for inline photos
+	    next;
+	}
+
+	$n =~ s/^\s*(.*?)(\s*\.jpe?g)+$/$1/i;  # remove extension(s) and leading/trailing whitespace
+	$n =~ s/\s+/ /g;	# compress whitespace in attachment name
+
+	$Photos{$n} = {
+	    JPEG => \q(),
+	    Category => '',
+	    ThumbnailCid => cid,# unique content ID for thumbnail attachments
+	    Status => [],
+	};
+
+	$AttachCount++;
+
+# Validate filename and category
+
+	my ($category, $artist, $title, $sequence) = ($n =~ $FILENAME_RE);	
+	$category ||= '';
+	$artist ||= '';
+	$title ||= '';
+	$sequence ||= '';
+
+	if ($category) {	# valid attachment filename
+	    ($category) = grep(/^$category$/i, @@Categories); # So category case matches subdirectory
+	    unless ($category) {
+		push @@{$Photos{$n}->{Status}},
+		    "ERROR: Invalid category (available categories: @@{[join(',', @@Categories)]})";
+		$errors++;
+	    }
+	} else {
+	    push @@{$Photos{$n}->{Status}},
+	    	"ERROR: Invalid attachment name (must be: <Category>-<First Name> <Last Name>-<Title>.jpg)";
+	    $errors++;
+	}
+
+	$Photos{$n}->{Category} = $category || '';
+
+# Extract JPEG data
+
+	my $jpegref = \$part->bodyhandle->as_string; # Reference to JPEG image
+	unless ($jpegref) {
+	    push @@{$Photos{$n}->{Status}},
+		"ERROR: JPEG image data missing";
+	    $errors++;
+	    next;
+	}
+	$Photos{$n}->{JPEG} = $jpegref;
+
+# Read EXIF
+
+	my $exif = $exifTool->ImageInfo($jpegref,
+					'ImageSize',
+					'ImageWidth', 'ImageHeight',
+					'ThumbnailImage');
+	unless ($exif) {
+	    push @@{$Photos{$n}->{Status}},
+		"ERROR: EXIF data missing";
+	    $errors++;
+	    next;
+	}
+
+	for (keys %$exif) { $Photos{$n}->{$_} = $exif->{$_} };
+
+	unless ($Photos{$n}->{ThumbnailImage}) {
+	    if ($Photos{$n}->{ImageSize}) { # Make thumbnail from full-size JPEG
+		print STDERR "No thumbnail; creating from resized JPEG\n" if $DebugOpt;
+		my $tn = Image::Magick->new(magick=>'jpg');
+		$tn->BlobToImage($$jpegref);
+		$tn->Resize(geometry=>'100x100');
+		$Photos{$n}->{ThumbnailImage} = \scalar($tn->ImageToBlob());
+	    } else {		# Use missing image icon
+		$MissingThumb = read_file($MISSINGFILE,  binmode => ':raw', scalar_ref => 1)
+		    unless $MissingThumb;
+		die "read_file($MISSINGFILE) FAILED, stopped"
+		    unless $MissingThumb;;
+
+		$Photos{$n}->{ThumbnailImage} = $MissingThumb;
+	    }
+	}
+
+	if ($DebugOpt) {
+	    print STDERR "ImageSize:      ", $Photos{$n}->{ImageSize} || '?', "\n";
+	    print STDERR "ImageWidth:     ", $Photos{$n}->{ImageWidth} || '?', "\n";
+	    print STDERR "ImageHeight:    ", $Photos{$n}->{ImageHeight} || '?', "\n";
+	    print STDERR "ThumbnailImage: ", length(${$Photos{$n}->{ThumbnailImage}}), " bytes\n";
+	    print STDERR "***\n";
+	}
+
+# Check photo dimensions
+
+	my $width = $Photos{$n}->{ImageWidth} || 0;
+	my $height = $Photos{$n}->{ImageHeight} || 0;
+
+	if ($width == 0 || $height == 0) {
+	    push @@{$Photos{$n}->{Status}},
+		"ERROR: Image data missing";
+	    $errors++;
+	    next;
+	}
+
+	if ($width > $MAXLONGEDGE || $height > $MAXLONGEDGE) {
+	    push @@{$Photos{$n}->{Status}},
+		"ERROR: Long dimension of ${width}x$height photo exceeds $MAXLONGEDGE";
+	    $errors++;
+	    next;
+	}
+
+	if ($width < $MINLONGEDGE && $height < $MINLONGEDGE) {
+	    push @@{$Photos{$n}->{Status}},
+		"WARNING: Long dimension of ${width}x$height photo less than $MINLONGEDGE";
+	    $WarnCount++;
+	}
+
+	next if $errors;
+	next unless $StoreOpt;
+
+# Calculate shuffle hash and assemble file name
+
+	my $hash = $ShuffleOpt ? hash($eventYYYYMMDD,$category,$artist,$title || $n).'-' : '';
+	my $fn = "$hash$category-$artist-$title$sequence.jpg";
+	$fn =~ tr(|\?*<":>/)/^/;   # map characters disallowed in Windows to ^
+
+	print STDERR ">>> JPEG filename: $fn", utf8::is_utf8($fn) ? " (UTF-8)\n":"\n"
+	    if $DebugOpt;
+
+# Write image file
+
+	my $encodedfn = encode_utf8("$category/$fn");
+	my $replace = -s $encodedfn;	# replace if file exists
+
+	unless (write_file($encodedfn,
+			   { binmode => ':raw', err_mode => 'quiet' },
+			   $Photos{$n}->{JPEG})) {
+	    push @@{$Photos{$n}->{Status}}, "write_file FAILED: $!";
+	    $errors++;
+	    next;
+	};
+
+	unless ($replace) {
+	    push @@{$Photos{$n}->{Status}}, "Successfully submitted, file: $fn";
+	    $SubmitCount++;
+	} else {
+	    push @@{$Photos{$n}->{Status}}, "Successfully resubmitted, file: $fn";
+	    $ResubmitCount++;
+	}
+
+    } continue {
+	if ($errors) {
+	    push @@{$Photos{$n}->{Status}}, "Submission FAILED, please correct errors and resubmit";
+	    $FailedCount++;
+	}
+    }
+}
+
+while (!$AttachCount && $Inline < 2) {
+    if ($RcvdEntity->parts) {
+	processParts($RcvdEntity->parts);
+    } else {
+	processParts($RcvdEntity);
+    }
+
+    $Inline++;		# No JPEG attachments--look for inline photos
+}
+
+die "No JPEG attachments\n" unless $AttachCount;
+
+#
+# Build acknowledgement email message
+#
+
+#
+# Build plain text alternative
+#
+
+my $ackText =
+    "$AttachCount photo(s) attached; $SubmitCount submitted, $ResubmitCount resubmitted, $FailedCount failed, $WarnCount warning(s)\n";
+$ackText .= "Please see $INSTRUCTIONS for instructions.\n" if $FailedCount || $WarnCount;
+$ackText .= "Categories available for $EventMMDDYYYY: @@{[join(' ', @@Categories)]}\n\n";
+
+foreach my $n (sort keys %Photos) {
+	foreach my $status (@@{$Photos{$n}->{Status}}) {
+	    $ackText .= "$n: $status";
+	    if ($status =~ /^Success/i) {
+		$ackText .= " (" . ($Photos{$n}->{ImageWidth} || '?')
+		    . 'w x ' . ($Photos{$n}->{ImageHeight} || '?') . 'h pixels, '
+		    . length(${$Photos{$n}->{JPEG}}) . " bytes)";
+	    }
+	    $ackText .= "\n";
+	}
+	$ackText .= "\n";
+    }
+$ackText = narrow($ackText);
+
+if ($DebugOpt) {
+    print STDERR ">>> Ack email text/plain alternative:\n", $ackText;
+    print STDERR "\n***\n";
+}
+
+$AckEntity->attach(Type => 'text/plain; charset=utf-8',
+		   Encoding => '7bit',
+		   Data => $ackText);
+
+#
+# Build html alternative
+#
+
+my $ackParts = $AckEntity->attach(Type => 'multipart/related',
+				  Encoding => '7bit',
+				  );
+
+my $ackHTML;
+
+if (keys %Photos) {
+
+# Read html template for ack message
+
+    my $ackTemplate;
+
+    my $fh;
+    open($fh, "<", "$SubmitDir/acktemplate.html")
+	or die "open $SubmitDir/acktemplate.html FAILED: $!, stopped";
+    {
+	local $/;
+	$ackTemplate = <$fh>;
+    }
+    close $fh;
+
+    my ($preamble, $tableRow, $postamble) = $ackTemplate =~ /^(.+)(<tr>.+<\/tr>)(.+)$/si;
+
+    $ackHTML = evaluate($preamble);
+
+    foreach my $n (sort keys %Photos) {
+	$ackHTML .= evaluate($tableRow, $n);
+    }
+
+    $ackHTML .= evaluate($postamble);
+
+}
+
+if ($DebugOpt) {
+    print STDERR ">>> Ack email text/html alternative:\n", $ackHTML;
+    print STDERR "\n***\n";
+}
+
+$ackParts->attach(Type => 'text/html; charset=utf-8',
+		   Encoding => '7bit',
+		   Data => $ackHTML);
+
+# Build thumbnail image parts
+
+foreach my $n (sort keys %Photos) {
+    my $tn = $Photos{$n}->{ThumbnailImage};
+
+    $ackParts->attach(Type => 'image/jpeg',
+		      Encoding => 'base64',
+		      Disposition => 'inline',
+		      Id => "<$Photos{$n}->{ThumbnailCid}>",
+		      Data => $$tn);
+}
+
+reply;			# Send acknowledgement email
+
+if ($FailedCount) {
+    print STDERR "submitter $SubmitterEmail: $FailedCount submission(s) failed\n";
+    exit 1;
+}
+
+1;
+__END__
+
+=head1 NAME
+
+submitter.pl -- Store and acknowledge JPEG photos submitted for Photochrome Camera Club events
+
+=head1 SYNOPSIS
+
+B<submitter.pl> [B<-domain> I<name>] [B<-user> I<name>] [B<-submitdir>
+I<directory>] [B<-event> I<yyyy-mm-dd>] [B<-ccack> I<address>] [B<-replyto> I<address>]
+[B<-[no]store>] [B<-[no]acknowledge>] [B<-[no]shuffle>] [B<-[no]debug>] I<email-message>
+
+=head1 DESCRIPTION
+
+This script is run from procmail to store JPEG photos in a submissions
+directory and return an acknowledgement email message to the sender.
+
+JPEG image attachments are expected to have filenames of the form:
+
+=over 4
+
+I<Category>C<->I<Artist>C<->I<Title>C<.jpg> (or C<.jpeg>)
+
+or
+
+I<Category>C<->I<Artist>C<->I<Title>C<->I<N>C< of >I<M>C<.jpg> (or C<.jpeg>)
+
+=back
+
+where:
+
+=over 4
+
+=item I<Category>
+
+is the case-insensitive name of a submissions subdirectory (C<OS>, C<Pic2>, C<TN>, etc.)
+
+=item I<Artist>
+
+is the first and last name of the photographer
+
+=item I<Title>
+
+is the photo's title
+
+=item I<N>C< of >I<M>
+
+indicates that this is the I<N>th photo in a sequence of I<M> photos
+that should be shown together.  I<N> and I<M> must be in the range
+1-9.
+
+=back
+
+Submitted photos must have a maximum long side dimension of 1024
+pixels.
+
+The script stores the jpegs in directories with names like
+C<~/submissions/>I<YYYY-MM-DD>C</>I<Category>, where I<YYYY-MM-DD> is
+the event date and I<Category> is the code for the category on that
+date.  The script accepts submissions only for the categories created
+for the next meeting date.  On the day of a meeting, it switches to
+accepting submissions for the next meeting, so the photos for the
+current meeting are frozen and can be copied to a laptop for
+projection later that day.  The script replies with an email message
+reporting the status of the submitted photos.
+
+=head2 Example .procmailrc
+
+  PATH=/usr/bin:/usr/local/bin
+  MAILDIR=/var/spool/mail/photochrome.org
+  LOGFILE=$HOME/.procmail.log
+  VERBOSE=yes
+  COMSAT=no
+  PERL5LIB=$HOME/perl/lib
+
+  :0
+  * ^(To|Cc|X-Forwarded-To):.*projectionist@@photochrome.org
+  {
+	  :0
+	  * !^FROM_DAEMON
+	  * !^X-Loop: submit@@photochrome.org
+	  {
+		  :0 wc
+		  | $HOME/perl/bin/submitter.pl -user projectionist
+
+# Deliver to failures mailbox if submission failure
+		  :0 e
+		  failures/
+	  }
+
+	  :0
+	  /dev/null
+  }
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-domain> I<name>
+
+Set the domain of the reply email message header to I<name> (default:
+C<photochrome.org>).
+
+=item B<-user> I<name>
+
+Set the user of the reply email message header to I<name> (default:
+C<submit>).
+
+=item B<-submitdir> I<directory>
+
+Set the top-level directory for submitted files to I<directory>
+(default: C<$HOME/submissions>).
+
+=item B<-event> I<yyyy-mm-dd>
+
+Set the submission event date to I<yyyy-mm-dd> (default: next event
+date after today).
+
+=item B<-ccack> I<address>
+
+Send a copy of reply messages to I<address>.
+
+=item B<-replyto> I<address>
+
+Additional Reply-To email I<address>.
+
+=item B<-[no]store>
+
+Write JPEG photos to target category directory (default: true).
+
+=item B<-[no]acknowledge>
+
+Send acknowledgement email reply message (default: true).
+
+=item B<-[no]shuffle>
+
+Prefix filename with 4-digit hash to shuffle photos (default: true).
+
+=item B<-[no]debug>
+
+Print debug output to STDERR (default: false).
+
+=back
+
+=head1 FILES
+
+=head2 C<acktemplate.html>
+
+The format of the html acknowledgement email reply message is defined by the
+C<acktemplate.html> file in the submission directory.  The template consists
+of an html table with a single row plus surrounding text.  The table row is
+interpreted once for each JPEG attachment.
+
+Text in the template tagged as C<E<lt>codeE<gt>> ... C<E<lt>/codeE<gt>> is
+interpreted as a perl expression, which is evaluated and replaced by
+the result.
+
+Thunderbird can be used to edit C<acktemplate.html>: write a message, click
+in the message area, select Insert->HTML..., copy and paste the current
+contents of C<acktemplate.html> into the pop-up window, select "Insert",
+edit the template, then select Save->File... to save the new template.
+
+=head3 Utility Subroutines
+
+=over 4
+
+=item C<encode>(I<string1>, I<string2>, ...)
+
+Calls HTML::Entities to replace unsafe characters in the argument
+strings with their HTML entity representations.  Returns an array of
+encoded strings in array context, or the first encoded string in
+scalar context.
+
+=back
+
+=head3 Global Constants and Variables
+
+The following variables may be referenced anywhere in an html
+template:
+
+=over 4
+
+=item C<$EventMMDDYYYY>
+
+The event date in MM/DD/YYYY format.
+
+=item C<$AttachCount>
+
+The number of JPEG file attachments.
+
+=item C<$SubmitCount>
+
+The number of JPEG photos successfully submitted.
+
+=item C<$ResubmitCount>
+
+The number of JPEG photos successfully resubmitted; i.e., a previously
+submitted photo with the same name was overwritten.
+
+=item C<$WarnCount>
+
+The number of warnings issued.
+
+=item C<$FailedCount>
+
+The number of unsuccessful JPEG photo submissions.
+
+=item C<$INSTRUCTIONS>
+
+A link to photo submission instructions.
+
+=item C<@@Categories>
+
+An array containing the names of the categories available for the
+current event.
+
+=item C<%Photos>
+
+A hash, keyed by attachment name, containing the following fields for
+each attachment:
+
+=over 4
+
+=item C<JPEG>
+
+A reference to the JPEG image data.
+
+=item C<Category>
+
+The (valid) category to which the photo is submitted.
+
+=item C<ThumbnailCid>
+
+The unique content id of the associated thumbnail image of the photo.
+
+=item C<Status>
+
+A reference to an array of strings of warning, error, and
+informational messages for the submitted photo.
+
+=item C<ImageWidth>
+
+The width of the photo in pixels, or C<'?'> if unknown.
+
+=item C<ImageHeight>
+
+The height of the photo in pixels, or C<'?'> if unknown.
+
+=item C<ThumbnailImage>
+
+The reference to the JPEG thumbnail image data.
+
+=back
+
+=back
+
+=head3 Table Row Variables
+
+The following variables may be referenced only within the table row
+portion of an html template:
+
+=over 4
+
+=item C<$n>
+
+The name of the attachment with the .jpg or .jpeg extension removed,
+leading/trailing whitespace removed, and multiple whitespace character
+sequences replaced by a single space.
+
+=item C<$category>
+
+The (valid) category to which the photo is submitted, or C<'?'> if
+none.
+
+=item C<$artist>
+
+The photographer's first and last name, or C<'?'> if the attachment
+name is invalid.
+
+=item C<$title>
+
+The photo's title, or C<'?'> if the attachment name is invalid.
+
+=item C<$sequence>
+
+The photo's I<N> C<of> I<M> sequence number, or empty if none.
+
+=item C<$width>
+
+The width of the photo in pixels, or C<'?'> if unknown.
+
+=item C<$height>
+
+The height of the photo in pixels, or C<'?'> if unknown.
+
+=item C<$size>
+
+The size of the JPEG image data in bytes.
+
+=item C<thumbnail>
+
+An html C<img> tag to insert the thumbnail image extracted from the JPEG image.
+
+=item C<@@status>
+
+An array of strings of warning, error, and informational messages for
+the submitted photo.
+
+=back
+
+=head1 REQUIRES
+
+Digest::MD5 qw(md5_hex), MIME::Parser, HTML::Entities, Getopt::Long,
+Time::localtime, Image::ExifTool
+
+=head1 SEE ALSO
+
+procmail, .procmailrc
+
+C<http://photochrome.org/club-info/submissions>
+
+=head1 AUTHOR
+
+  Keith Gorlen
+  gorlen@@comcast.net
+
+=cut
+@
+
+
+1.30
+log
+@Correct link to submission instructions.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.29 2016/10/08 01:09:34 photochr Exp photochr $
+d16 3
+d183 1
+d185 1
+a185 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.29 $ =~ /(\d+)\.(\d+)/g;
+d198 1
+a198 1
+my $REV = substr(q$Revision: 1.29 $, 10);
+d221 1
+d266 20
+d335 2
+d339 1
+a339 1
+	print STDERR "SMTPHOSTS=", $ENV{SMTPHOSTS} || '';
+d349 2
+d360 2
+a361 1
+    die "submitter $SubmitterEmail: ", @@_ unless $AckEntity;	# Reply to email not possible
+d413 6
+d762 6
+d810 5
+d1105 2
+a1106 2
+leading/trailing whitespace removed, a multiple whitespace character
+sequncess replaced by a single space.
+@
+
+
+1.29
+log
+@Set Host to 'localhost' in smtpsend()--causes use of dedicated IP
+when sending email to help avoid having messages blocked as spam.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.28 2016/10/07 16:17:12 photochr Exp photochr $
+d16 4
+d181 1
+a181 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.28 $ =~ /(\d+)\.(\d+)/g;
+d194 1
+a194 1
+my $REV = substr(q$Revision: 1.28 $, 10);
+d200 1
+a200 1
+my $INSTRUCTIONS = 'http://photochrome.org/club-info/submissions'; # Link to submission instructions
+@
+
+
+1.28
+log
+@Set "Hello" and "MailFrom" fields in smtpsend() to help avoid
+having messages blocked as spam.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.27 2016/04/19 23:26:44 photochr Exp photochr $
+d16 4
+d177 1
+a177 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.27 $ =~ /(\d+)\.(\d+)/g;
+d190 1
+a190 1
+my $REV = substr(q$Revision: 1.27 $, 10);
+d314 1
+@
+
+
+1.27
+log
+@Remove unecessary utf8::decode() of recommended_filename.
+Apply encode_utf8() to image file name.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.26 2016/04/19 18:06:04 photochr Exp photochr $
+d16 4
+d173 1
+a173 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.26 $ =~ /(\d+)\.(\d+)/g;
+d186 1
+a186 1
+my $REV = substr(q$Revision: 1.26 $, 10);
+d308 5
+a312 2
+    $AckEntity->smtpsend(Debug=>$DebugOpt)
+	or die "smtpsend FAILED: $!, stopped" if $AckOpt;
+@
+
+
+1.26
+log
+@Set utf8 mode on STDERR to suppress wide character warnings for
+attachment names.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.25 2016/04/17 20:59:20 photochr Exp photochr $
+d16 4
+d169 1
+a169 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.25 $ =~ /(\d+)\.(\d+)/g;
+d182 1
+a182 1
+my $REV = substr(q$Revision: 1.25 $, 10);
+d504 1
+a504 1
+	print STDERR ">>> recommended_name: $n", utf8::is_utf8($n) ? " (UTF-8)\n":"\n"
+a508 2
+	} else {
+	    utf8::decode($n);
+d646 2
+a647 1
+	my $replace = -s "$category/$fn";	# replace if file exists
+d649 1
+a649 1
+	unless (write_file("$category/$fn",
+@
+
+
+1.25
+log
+@- Apply encode_utf8() to md5_hex() input to avoid "Wide character in subroutine entry" error in hash().
+- Add recommended_name debug output.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.24 2014/12/13 02:38:40 photochr Exp photochr $
+d16 4
+d165 1
+a165 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.24 $ =~ /(\d+)\.(\d+)/g;
+d178 1
+a178 1
+my $REV = substr(q$Revision: 1.24 $, 10);
+d223 1
+@
+
+
+1.24
+log
+@Overhaul error handling to send error replies.
+Correct handling of UTF-8 attachment filenames.
+Attach "missing image file" thumbnail if no/bad jpeg image submitted.
+Use File::Slurp for jpeg I/O.
+Set Disposition => 'inline' in thumbnail parts (though does not appear to make a difference).
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.23 2014/10/05 19:06:37 photochr Exp photochr $
+d16 7
+d161 1
+a161 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.23 $ =~ /(\d+)\.(\d+)/g;
+d174 1
+a174 1
+my $REV = substr(q$Revision: 1.23 $, 10);
+d234 2
+a235 2
+    no warnings;
+    my $md5 = md5_hex(@@_);
+d495 3
+@
+
+
+1.23
+log
+@Remove $ackEntity->print(\*STDERR) -- duplicates $ackEntity->smtpsend(Debug=>$DebugOpt) output.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.22 2014/08/19 18:19:03 photochr Exp photochr $
+d16 3
+d143 2
+d148 1
+d154 1
+a154 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.22 $ =~ /(\d+)\.(\d+)/g;
+d167 1
+a167 1
+my $REV = substr(q$Revision: 1.22 $, 10);
+d174 1
+d193 1
+d277 59
+d351 86
+d440 2
+a441 2
+    or die "submitter: opendir($SubmitDir) FAILED: $!\n";
+chdir $SubmitDir or die "submitter: chdir($SubmitDir) FAILED: $!\n";
+d450 1
+a450 1
+die "submitter: No future event subdirectory in $SubmitDir\n" unless $eventYYYYMMDD;
+d458 2
+a459 2
+    or die "submitter: opendir($SubmitDir/$eventYYYYMMDD) FAILED: $!\n";
+chdir "$SubmitDir/$eventYYYYMMDD" or die "submitter: chdir($SubmitDir/$eventYYYYMMDD) FAILED: $!\n";
+d464 2
+a465 1
+die "submitter: No category subdirectories in $SubmitDir/$eventYYYYMMDD\n" unless @@Categories;
+a475 22
+# Create parser and set parsing options:
+
+my $parser = new MIME::Parser;
+$parser->output_to_core(1);
+
+# Parse received message
+
+my $rcvdEntity = $parser->parse(\*STDIN) or die "submitter: parse FAILED\n";
+my $parseResults = $parser->results;
+
+if ($DebugOpt) {
+    if ($parseResults->msgs) {
+	print STDERR join("\n", $parseResults->msgs), "\n--\n";
+    }
+
+    $rcvdEntity->dump_skeleton(\*STDERR);
+    print STDERR "\n***\n";
+}
+
+$SubmitterEmail = $rcvdEntity->head->get('From') || '?';
+$SubmitterEmail =~ s/^[\s\n]*(.*?)[\s\n]*$/$1/; # remove leading/trailing whitespace/newlines
+
+d486 1
+d488 8
+a495 1
+	print STDERR ">>> Attachment name: $n\n" if $DebugOpt;
+d565 15
+a579 6
+	unless ($Photos{$n}->{ThumbnailImage}) { # Make thumbnail from full-size JPEG
+	    print STDERR "No thumbnail; creating from resized JPEG\n" if $DebugOpt;
+	    my $tn = Image::Magick->new(magick=>'jpg');
+	    $tn->BlobToImage($$jpegref);
+	    $tn->Resize(geometry=>'100x100');
+	    $Photos{$n}->{ThumbnailImage} = \scalar($tn->ImageToBlob());
+d586 1
+a586 3
+	    if ($_ = $Photos{$n}->{ThumbnailImage}) {
+		print STDERR "ThumbnailImage: ", length($$_), " bytes\n";
+	    }
+d595 7
+a621 1
+#	$fn =~ s/[^[:print:]]/^/g; # map non-printable (accented) characters to ^
+d624 3
+d631 4
+a634 14
+	my $fh;
+	unless (open($fh, ">$category/$fn"))	{
+	    push @@{$Photos{$n}->{Status}}, "open FAILED: $!";
+	    $errors++;
+	    next;
+	};
+	binmode $fh;
+	unless (print $fh ${$Photos{$n}->{JPEG}}) {
+	    push @@{$Photos{$n}->{Status}}, "write FAILED: $!";
+	    $errors++;
+	    next;
+	};
+	unless (close $fh) {
+	    push @@{$Photos{$n}->{Status}}, "close FAILED: $!";
+d656 2
+a657 2
+    if ($rcvdEntity->parts) {
+	processParts($rcvdEntity->parts);
+d659 1
+a659 1
+	processParts($rcvdEntity);
+d665 2
+a670 20
+# Build message header
+
+my @@header = (Type => 'multipart/alternative',
+	      From => "$UserOpt\@@$DomainOpt",
+	      To => $rcvdEntity->head->get('From') || join(',', @@ReplyToOpt),
+	      Subject => "Re: " . ($rcvdEntity->head->get('Subject') || "[Photochrome submission]"),
+	      'Reply-To' => join(',', @@ReplyToOpt),
+	      'Return-Path' => $SUPPORT_EMAIL,
+	      'X-Loop' => "$UserOpt\@@$DomainOpt",
+	      );
+
+if ($_ = $rcvdEntity->head->get('Message-ID')) {
+    push @@header, 'References', $_;
+    push @@header, 'In-Reply-To:', $_;
+}
+
+push(@@header, 'CC', join(',', @@CcAcksOpt)) if @@CcAcksOpt;
+
+my $ackEntity = new MIME::Entity->build(@@header);
+
+d675 4
+a678 1
+my $ackText;
+d680 1
+a680 12
+if ($parseResults->errors) {
+    $ackText = "Photo submission FAILED!\n\n";
+    $ackText .= "Error details:\n" . join("\n", $parseResults->msgs) . "\n";
+
+} elsif ($AttachCount) {
+    $ackText =
+	"$AttachCount photo(s) attached; $SubmitCount submitted, $ResubmitCount resubmitted, $FailedCount failed, $WarnCount warning(s)\n";
+    $ackText .= "Please see $INSTRUCTIONS for instructions.\n"
+	if $FailedCount || $WarnCount;
+    $ackText .= "Categories available for $EventMMDDYYYY: @@{[join(' ', @@Categories)]}\n\n";
+
+    foreach my $n (sort keys %Photos) {
+d693 1
+a693 7
+} else {
+    $ackText = "No JPEG photo attachments found!\n";
+}
+
+$ackText .= "Reply to this message for assistance.\n";
+
+$ackEntity->attach(Type => 'text/plain; charset=utf-8',
+a696 4
+my $ackParts = $ackEntity->attach(Type => 'multipart/related',
+				  Encoding => '7bit',
+				  );
+
+d701 4
+d707 1
+a707 19
+if ($parseResults->errors) {
+    $ackHTML = <<HTML;
+<html>
+    <head>
+      <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    </head>
+    <body><big><b>Photo submission FAILED!</b></big><br>
+    <br>
+    Error details:<br>
+HTML
+  
+    $ackHTML .= '<pre>' . join("\n",encode($parseResults->msgs)) . "\n" . '</pre>';
+
+    $ackHTML .= <<HTML;
+    </body>
+</html>
+HTML
+
+} elsif (keys %Photos) {
+d715 1
+a715 1
+	or die "submitter: $SubmitterEmail--open $SubmitDir/acktemplate.html FAILED: $!";
+a731 12
+} else {
+    $ackHTML = <<HTML;
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    </head>
+    <body>
+    <big><b>No JPEG photo attachments found!</b></big><br>
+    Reply to this message for assistance.<br>
+    </body>
+</html>
+HTML
+a739 2
+my $tnId = 0;
+
+d743 5
+a747 9
+    if ($tn) {
+	$ackParts->attach(Type => 'image/jpeg',
+			  Encoding => 'base64',
+#			  Disposition => 'inline',
+#			  Disposition => 'attachment',
+			  Id => "<$Photos{$n}->{ThumbnailCid}>",
+#			  Filename => "thumb$tnId.jpg",
+			  Data => $$tn);
+    }
+d750 1
+a750 1
+# Send acknowledgement email
+d752 3
+a754 3
+if ($DebugOpt) {
+    print STDERR "SMTPHOSTS=", $ENV{SMTPHOSTS} || '';
+    print STDERR "\n***\n";
+a756 7
+$ackEntity->smtpsend(Debug=>$DebugOpt)
+    or die "submitter: $SubmitterEmail--smtpsend FAILED: $!\n" if $AckOpt;
+
+die "submitter: $SubmitterEmail--Email parse errors " if $parseResults->errors;
+die "submitter: $SubmitterEmail--No JPEG attachments" unless $AttachCount;
+die "submitter: $SubmitterEmail--Submissions failed" if $FailedCount;
+
+@
+
+
+1.22
+log
+@Move SMTPHOSTS debug.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.21 2014/08/18 01:30:06 photochr Exp photochr $
+d16 3
+d148 1
+a148 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.21 $ =~ /(\d+)\.(\d+)/g;
+d161 1
+a161 1
+my $REV = substr(q$Revision: 1.21 $, 10);
+a674 1
+    $ackEntity->print(\*STDERR);
+d679 2
+a680 1
+$ackEntity->smtpsend or die "submitter: $SubmitterEmail--smtpsend FAILED: $!\n" if $AckOpt;
+@
+
+
+1.21
+log
+@Print SMTPHOSTS for debugging.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.20 2014/06/07 21:31:25 photochr Exp photochr $
+d16 3
+d145 1
+a145 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.20 $ =~ /(\d+)\.(\d+)/g;
+d158 1
+a158 1
+my $REV = substr(q$Revision: 1.20 $, 10);
+a671 1
+    print STDERR "SMTPHOSTS=", $ENV{SMTPHOSTS} || '', "\n";
+d673 1
+@
+
+
+1.20
+log
+@Make thumbnail from full-size JPEG if embedded thumbnail missing.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.19 2013/12/29 01:48:34 photochr Exp photochr $
+d16 3
+d142 1
+a142 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.19 $ =~ /(\d+)\.(\d+)/g;
+d155 1
+a155 1
+my $REV = substr(q$Revision: 1.19 $, 10);
+d669 1
+@
+
+
+1.19
+log
+@Remove code to remove UTF enconding tag (unnecessary).
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.18 2013/06/01 17:11:28 photochr Exp photochr $
+d16 3
+d137 1
+d139 1
+a139 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.18 $ =~ /(\d+)\.(\d+)/g;
+d152 1
+a152 1
+my $REV = substr(q$Revision: 1.18 $, 10);
+d416 8
+d429 1
+a429 1
+		print STDERR "ThumbnailImage: ", length($$_), " bytes\n"
+@
+
+
+1.18
+log
+@Add -replyto to USAGE.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.17 2013/02/15 21:44:34 photochr Exp photochr $
+d16 3
+d135 1
+a135 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.17 $ =~ /(\d+)\.(\d+)/g;
+d148 1
+a148 1
+my $REV = substr(q$Revision: 1.17 $, 10);
+a343 2
+	$n =~ s/^=\?.+\?Q\?(.+)\?=$/$1/; # Remove UTF encoding tag, e.g. =?ISO-8859-1?Q? ... ?=
+
+d447 2
+a448 1
+	$fn =~ tr(|\?*<":>/)/^/; # map characters allowed in Mac/Unix filenames but disallowed in Windows to ^
+@
+
+
+1.17
+log
+@Map characters allowed in Mac/Unix filenames but disallowed in Windows to ^.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.16 2012/11/18 21:26:57 photochr Exp $
+d16 3
+d132 1
+a132 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.16 $ =~ /(\d+)\.(\d+)/g;
+d142 1
+a142 1
+                [ -event <yyyy-mm-dd> ] [ -ccack <address> ] 
+d145 1
+a145 1
+my $REV = substr(q$Revision: 1.16 $, 10);
+@
+
+
+1.16
+log
+@Correct $FILENAME_RE to restrict category to word characters.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.15 2012/10/19 18:19:42 photochr Exp photochr $
+d16 3
+d129 1
+a129 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.15 $ =~ /(\d+)\.(\d+)/g;
+d142 1
+a142 1
+my $REV = substr(q$Revision: 1.15 $, 10);
+d443 1
+@
+
+
+1.15
+log
+@Remove multiple .jpg/.jpeg extensions from attachement names.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.14 2012/10/01 19:52:58 photochr Exp photochr $
+d16 3
+d126 1
+a126 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.14 $ =~ /(\d+)\.(\d+)/g;
+d139 1
+a139 1
+my $REV = substr(q$Revision: 1.14 $, 10);
+d143 1
+a143 1
+my $FILENAME_RE = qr/^\s*([^-]+?)\s*-\s*([^-]+?)\s*-\s*(.+?)\s*(-\s*[1-9]\s*of\s*[1-9])?$/i; # Valid attached file name RE
+@
+
+
+1.14
+log
+@Remove -inline option.
+Process inline JPEGs if no JPEG attachments.
+Default width and height in evaluate().
+Update .procmailrc example.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.13 2012/09/23 22:14:50 photochr Exp photochr $
+d16 6
+d123 1
+a123 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.13 $ =~ /(\d+)\.(\d+)/g;
+d136 1
+a136 1
+my $REV = substr(q$Revision: 1.13 $, 10);
+d341 1
+a341 1
+	$n =~ s/^\s*(.*?)\s*\.jpe?g$/$1/i;  # remove extension and leading/trailing whitespace
+@
+
+
+1.13
+log
+@Add "submitter:" and submitter email address to die messages so they
+appear in .procmail.log.
+Correct removal of leading/trailing whitespace from attachment name.
+Die if parse errors, no JPEG attachments, or submissions failures to
+enable procmail to save email message in these cases.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.12 2012/09/22 22:27:16 photochr Exp photochr $
+d16 7
+d117 1
+a117 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.12 $ =~ /(\d+)\.(\d+)/g;
+d130 1
+a130 1
+my $REV = substr(q$Revision: 1.12 $, 10);
+a150 1
+my $InlineOpt = 0;		# Process inline photos
+d152 1
+d219 2
+a220 2
+	$width = $Photos{$n}->{ImageWidth};
+	$height = $Photos{$n}->{ImageHeight};
+a248 1
+	   "inline!",		\$InlineOpt,
+a252 1
+
+a311 1
+$InlineOpt = $InlineOpt || $rcvdEntity->head->get('X-Mailer') =~ /Apple Mail/i;
+d331 1
+a331 1
+	    processParts($part->parts) if $InlineOpt;	# process sub-parts for inline photos
+d470 8
+a477 4
+if ($rcvdEntity->parts) {
+    processParts($rcvdEntity->parts);
+} else {
+    processParts($rcvdEntity);
+d657 1
+a657 2
+[B<-[no]store>] [B<-[no]acknowledge>] [B<-[no]shuffle>] [B<-[no]inline>]
+[B<-[no]debug>] I<email-message>
+d725 1
+a725 1
+	  :0 h b
+d728 8
+a735 2
+	  | $HOME/perl/bin/submitter.pl -user projectionist
+
+a784 4
+=item B<-[no]inline>
+
+Process inline JPEG photos (default: false).
+
+@
+
+
+1.12
+log
+@Change hash range from 0000-9972 to 0001-9973.
+Change all filename and category warnings to fatal errors.
+Add "Submisssion FAILED" message.
+Add "Reply to this message for assistance" message.
+Exit 1 if no attachments.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.11 2012/09/09 16:59:35 photochr Exp photochr $
+d16 7
+d110 1
+a110 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.11 $ =~ /(\d+)\.(\d+)/g;
+d123 1
+a123 1
+my $REV = substr(q$Revision: 1.11 $, 10);
+d147 1
+d196 1
+a196 1
+# evaluate -- evaluate <tt>expr</tt> expressions in html template
+d245 1
+a245 1
+    or die $USAGE;
+d251 2
+a252 2
+    or die "opendir($SubmitDir) FAILED: $!\n";
+chdir $SubmitDir or die "chdir($SubmitDir) FAILED: $!\n";
+d261 1
+a261 1
+die "No future event subdirectory in $SubmitDir\n" unless $eventYYYYMMDD;
+d269 2
+a270 2
+    or die "opendir($SubmitDir/$eventYYYYMMDD) FAILED: $!\n";
+chdir "$SubmitDir/$eventYYYYMMDD" or die "chdir($SubmitDir/$eventYYYYMMDD) FAILED: $!\n";
+d275 1
+a275 1
+die "No category subdirectories in $SubmitDir/$eventYYYYMMDD\n" unless @@Categories;
+d293 1
+a293 1
+my $rcvdEntity = $parser->parse(\*STDIN) or die "parse FAILED\n";
+d305 2
+d331 1
+a331 1
+	$n =~ s/\s*(.*)\s*\.jpe?g$/$1/i;  # remove extension and leading/trailing whitespace
+d572 1
+a572 1
+	or die "open $SubmitDir/acktemplate.html FAILED: $!";
+d632 1
+a632 1
+$ackEntity->smtpsend or die "smtpsend FAILED: $!\n" if $AckOpt;
+d634 3
+a636 1
+exit 1 unless $AttachCount;
+@
+
+
+1.11
+log
+@Improve hash() function: include least significant eight hex digits of md5,
+change modulus from 10000 to 9973 (largest prime <10000).
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.10 2012/09/06 22:14:18 photochr Exp photochr $
+d16 4
+d103 1
+a103 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.10 $ =~ /(\d+)\.(\d+)/g;
+d116 1
+a116 1
+my $REV = substr(q$Revision: 1.10 $, 10);
+d175 1
+a175 1
+    return sprintf '%04u', (hex(substr($md5,0,16)) ^ hex(substr($md5,16,16))) % 9973;
+d304 2
+d308 2
+a309 2
+
+	my $n = $part->head->recommended_filename || '';
+d330 1
+d333 1
+a333 1
+# Validate filename
+d341 8
+a348 1
+	unless ($category) {	# invalid attachment filename
+d350 2
+a351 2
+		"WARNING: Invalid attachment name (must be: <Category>-<First Name> <Last Name>-<Title>.jpg)";
+	    $WarnCount++;
+d354 4
+d361 2
+a362 2
+		"FAILED: JPEG image data missing";
+	    $FailedCount++;
+d375 2
+a376 2
+		"FAILED: EXIF data missing";
+	    $FailedCount++;
+d399 2
+a400 2
+		"FAILED: Longer dimension of ${width}x$height photo exceeds $MAXLONGEDGE";
+	    $FailedCount++;
+d406 1
+a406 1
+		"WARNING: Longer dimension of ${width}x$height photo less than $MINLONGEDGE";
+d410 2
+a411 35
+# Determine category and filename
+
+	($category) = grep(/^$category$/i, @@Categories); # So category case matches subdirectory
+	$category ||= '';	# $category true implies filename and category valid
+
+	my $fn = "$category-$artist-$title$sequence"; # Assume filename and category valid
+
+# Filename valid, multiple categories, invalid category => FAIL
+# Filename invalid, multiple categories => FAIL
+
+	if (!$category && @@Categories > 1) {
+	    push @@{$Photos{$n}->{Status}},
+	    "FAILED: Invalid category (available categories: @@{[join(',', @@Categories)]})";
+	    $FailedCount++;
+	    next;
+	}
+
+# Filename valid, single category, invalid category => WARN, fn = corrected category-artist-title[-sequence]
+# Filename invalid, single category => WARN, fn = only category-attachment name
+
+	if (!$category) {
+	    $category = $Categories[0]; 
+
+	    if ($artist && $title) {	# Filename is valid
+		$fn = "$category-$artist-$title$sequence";
+	    } else {
+		$fn = "$category-$n";
+	    }
+
+	    push @@{$Photos{$n}->{Status}},
+	    "WARNING: Invalid category (available categories: @@{[join(',', @@Categories)]})";
+	    $WarnCount++;
+	}
+
+	$Photos{$n}->{Category} = $category;
+d413 1
+a413 1
+# Calculate shuffle hash
+d416 1
+d420 1
+a420 3
+	next unless $StoreOpt;
+
+	my $replace = -s "$category/$hash$fn.jpg";	# replace if file exists
+d423 1
+a423 1
+	unless (open($fh, ">$category/$hash$fn.jpg"))	{
+d425 1
+a425 1
+	    $FailedCount++;
+d431 1
+a431 1
+	    $FailedCount++;
+d436 1
+a436 1
+	    $FailedCount++;
+d441 1
+a441 1
+	    push @@{$Photos{$n}->{Status}}, "Successfully submitted, file: $hash$fn";
+d444 1
+a444 1
+	    push @@{$Photos{$n}->{Status}}, "Successfully resubmitted, file: $hash$fn";
+d448 5
+d517 1
+a517 1
+    $ackText = "No JPEG photo attachments found!";
+d585 4
+a588 1
+    <body><big><b>No JPEG photo attachments found!</b></big></body>
+d624 2
+@
+
+
+1.10
+log
+@Process received Entity as part if no other parts.
+Process sub-parts if X-Mailer = Apple Mail.
+Include link to submission instructions in reply message if errors or warnings.
+Add "Reply to this message for assistance." to reply message.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.9 2012/08/20 01:24:32 photochr Exp photochr $
+d16 6
+d99 1
+a99 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.9 $ =~ /(\d+)\.(\d+)/g;
+d112 1
+a112 1
+my $REV = substr(q$Revision: 1.9 $, 10);
+d171 1
+a171 1
+    return sprintf '%04u', (hex(substr($md5,0,16)) ^ hex(substr($md5,8,16))) % 10000;
+@
+
+
+1.9
+log
+@Implement Reply-To header field in acknowledgement email and -replyto command line option.
+Process inline JPEG photos, but keep disabled using new -inline command line option default.
+Only process parts with content-type image/jpeg, image/jpg, or application/octet-stream
+to avoid processing e.g. application/applefile content.
+Set reply To field to $SUPPORT_EMAIL if From undefined, e.g. due to parse failure.
+Set Return-Path header field in acknowledgement email to $SUPPORT_EMAIL for receipt of
+"bounced" email.
+Remove signature from plain/text alternative--not needed with Reply-To.
+Update documentation.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.8 2012/08/14 21:20:57 photochr Exp photochr $
+d16 11
+d93 1
+a93 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.8 $ =~ /(\d+)\.(\d+)/g;
+d106 1
+a106 1
+my $REV = substr(q$Revision: 1.8 $, 10);
+d112 1
+d287 2
+d461 5
+a465 1
+processParts($rcvdEntity->parts);
+d504 2
+d525 2
+d801 1
+a801 1
+=head3 Global Variables
+d833 4
+@
+
+
+1.8
+log
+@Change thumbnailImg() to $thumbnail html template local variable.
+Check email parser results; reply with parser messages if error.
+Generate correct reply header if parse failure.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.7 2012/07/22 20:24:04 photochr Exp photochr $
+d16 5
+d82 1
+a82 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.7 $ =~ /(\d+)\.(\d+)/g;
+d95 1
+a95 1
+my $REV = substr(q$Revision: 1.7 $, 10);
+d100 1
+d111 1
+d115 1
+d208 1
+d212 1
+d279 3
+a281 1
+my @@parts = $rcvdEntity->parts;	# Attachment handles
+d283 2
+a284 3
+foreach my $part (@@parts) {
+    my $n = $part->head->recommended_filename || '';
+    print STDERR ">>> Attachment name: $n\n" if $DebugOpt;
+d286 8
+a293 1
+    $n =~ s/^=\?.+\?Q\?(.+)\?=$/$1/; # Remove UTF encoding tag, e.g. =?ISO-8859-1?Q? ... ?=
+a294 1
+    if ($n =~ /\.jpe?g$/i) {
+a300 3
+	    ImageSize => '?',	# WxH
+	    ImageWidth => '?',
+	    ImageHeight => '?',
+d443 1
+a443 1
+	
+d447 2
+d457 1
+a457 1
+	      To => $rcvdEntity->head->get('From') || "info\@@$DomainOpt",
+d459 2
+a596 2
+$ackEntity->sign(File => "$ENV{HOME}/.signature");
+
+d614 2
+a615 2
+I<directory>] [B<-event> I<yyyy-mm-dd>] [B<-ccack> I<address>]
+[B<-[no]store>] [B<-[no]acknowledge>] [B<-[no]shuffle>]
+a682 2
+  * !^FROM_DAEMON
+  * !^X-Loop: projectionist@@photochrome.org
+d685 2
+d688 4
+d722 4
+d738 4
+@
+
+
+1.7
+log
+@Implement thumbnailImg() for use in acktemplate.html to avoid
+conversion of "cid:" to a link when edited in Thunderbird.
+Use html <code> tag instead of <tt> to denote perl code in
+acktemplate.html.
+Remove leading/trailing whitespace from attachment base name.
+Update documentation.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.6 2012/07/21 18:49:02 photochr Exp photochr $
+d16 8
+d77 1
+a77 1
+$VERSION = sprintf "%d.%03d", q$Revision: 1.6 $ =~ /(\d+)\.(\d+)/g;
+d90 1
+a90 1
+my $REV = substr(q$Revision: 1.6 $, 10);
+a157 9
+# thumbnailImg -- html to insert thmbnail image
+#
+
+sub thumbnailImg {
+    my $n = shift;	# Photo name
+    return qq(<img src="cid:$Photos{$n}->{ThumbnailCid}">);
+}
+
+#
+d165 1
+a165 1
+    my ($category, $artist, $title, $sequence, $width, $height, $size, @@status);
+d177 1
+d254 1
+d257 5
+a261 1
+    $rcvdEntity->dump_skeleton;
+d439 5
+a443 8
+my @@header = (
+    Type => 'multipart/alternative',
+    From => "$UserOpt\@@$DomainOpt",
+    To => $rcvdEntity->head->get('From'),
+    Subject => "Re: @@{[$rcvdEntity->head->get('Subject')]}",
+    References => $rcvdEntity->head->get('Message-ID'),
+    'In-Reply-To:' => $rcvdEntity->head->get('Message-ID'),
+    'X-Loop' => "$UserOpt\@@$DomainOpt",
+d446 5
+d461 5
+a465 1
+if ($AttachCount) {
+d468 1
+a468 4
+    $ackText .= "Categories available for $EventMMDDYYYY: @@{[join(' ', @@Categories)]}\n\n",
+} else {
+    $ackText = "No JPEG photo attachments found!";
+}
+d470 9
+a478 7
+foreach my $n (sort keys %Photos) {
+    foreach my $status (@@{$Photos{$n}->{Status}}) {
+	$ackText .= "$n: $status";
+	if ($status =~ /^Success/i) {
+	    $ackText .= " (" . ($Photos{$n}->{ImageWidth} || '?')
+		. 'w x ' . ($Photos{$n}->{ImageHeight} || '?') . 'h pixels, '
+		. length(${$Photos{$n}->{JPEG}}) . " bytes)";
+d482 3
+a484 1
+    $ackText .= "\n";
+d499 22
+d523 1
+a523 1
+my $ackTemplate;
+d525 8
+a532 8
+my $fh;
+open($fh, "<", "$SubmitDir/acktemplate.html")
+    or die "open $SubmitDir/acktemplate.html FAILED: $!";
+{
+    local $/;
+    $ackTemplate = <$fh>;
+}
+close $fh;
+d534 1
+a534 4
+my ($preamble, $tableRow, $postamble) = $ackTemplate =~ /^(.+)(<tr>.+<\/tr>)(.+)$/si;
+my $ackHTML;
+
+if (keys %Photos) {
+a544 1
+
+a552 1
+
+a748 5
+=item C<thumbnailImg>(I<attachment name>)
+
+Returns an html img tag that will insert the thumbnail image extracted from
+I<attachment name>.
+
+d871 4
+@
+
+
+1.6
+log
+@Add -[no]event and -[no]shuffle options.
+Unimplement CCACK environment variable.
+Add hash() to suppress portability warnings.
+Implement additional row-specific local variables in evaluate().
+Remove UTF encoding tag from attachement name.
+Compress whitespace and remove .jpg/.jpeg extension from attachement name.
+Use barewords in hash element references.
+Use attachment name as %Photos key instead of filename.
+Correct category validation logic.
+Add filename to success status messages.
+Complete documentation.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.5 2012/07/16 16:17:43 photochr Exp photochr $
+d16 13
+d69 1
+a69 1
+$VERSION = sprintf "%d.%03d", q$Revision$ =~ /(\d+)\.(\d+)/g;
+d82 1
+a82 1
+my $REV = substr(q$Revision: 1.5 $, 10);
+d150 9
+d183 1
+a183 1
+	while (s/<tt>(.+?)<\/tt>/$1/s) {
+d189 1
+a189 1
+    $template =~ s/<tt>(.+?)<\/tt>/decode_entities($1)/eesg;
+d273 2
+a274 2
+	$n =~ s/\s+/ /g;	# compress whitespace in filename
+	$n =~ s/\s*\.jpe?g$//i;	# remove extension
+d700 1
+a700 1
+Text in the template tagged as C<E<lt>ttE<gt>> ... C<E<lt>/ttE<gt>> is
+d704 5
+d720 5
+@
+
+
+1.5
+log
+@Implement -domain and -user options.
+Warn if long edge less than minimum.
+Accept submission of N of M photo sequences.
+Prefix filenames with 4-digit hash to shuffle photos.
+Implement warning messages.
+Support array argument/return values in encode().
+Support optional filename argument in evaluate(); eliminate evalRow().
+Replace decode hex chars and deref operator fix with decode_entities in evaluate().
+Change invalid file name to warning.
+Change invalid category to warning if only one category available for event.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.4 2012/06/30 23:10:36 photochr Exp photochr $
+d16 12
+d56 1
+a56 1
+$VERSION = '1.0';		# Version for MakeMaker
+d65 3
+a67 2
+my $USAGE = "USAGE: submitter.pl [ -submitdir <directory> ] [ -[no]store ]
+		[ -[no]acknowledge ] [ -ccack address ] [ -[no]debug ] [ email ]\n";
+d69 1
+a69 1
+my $REV = substr(q$Revision: 1.4 $, 10);
+d73 1
+a73 1
+my $FILENAME_RE = qr/^\s*([^-]+?)\s*-\s*([^-]+?)\s*-\s*([^-]+?)\s*(-\s*[1-9]\s*of\s*[1-9])?$/i; # Valid full file name RE
+a79 1
+my $StoreOpt = 1;		# Store photos in directory
+d82 3
+d86 1
+a87 1
+my @@CcAcksOpt = split(/\s*[,:]\s*/, $ENV{CCACK} || ''); # Email addresses for acknowledgement Cc:
+d95 10
+a104 7
+my %Photos;			# $Photos filename} = \(JPEG => jpeg ref
+				# 			ThumbnailCid => unique content ID
+				#			Status => [error/warning descriptions]
+				# 			ImageWidth => pixels
+				# 			ImageHeight => pixels
+				# 			ImageSize => WxH
+				# 			ThambnailImage => jpeg thumbnail
+d118 10
+d142 1
+a142 1
+    my $fn = shift || '';	# Optional photo filename
+d144 14
+a157 6
+    my ($category, $artist, $title, $sequence) = ($fn =~ $FILENAME_RE);
+    $category ||= '?';
+    $artist ||= '?';
+    $title .= $sequence || '';
+    $title ||= $Photos{$fn}->{AttachmentName} if $fn;
+    $title ||= '';
+d176 1
+d179 1
+d194 3
+a196 2
+my ($eventYYYYMMDD) = sort map( ($nowYYYYMMDD lt $_ ? ($_) : ()),
+			      grep { /^\d\d\d\d-\d\d-\d\d$/ && -d $_ } readdir($dh));
+d245 2
+a246 4
+    my $fn = $part->head->recommended_filename;
+    if ($fn && $fn =~ /\.jpe?g$/i) {
+	$fn =~ s/\s+/ /g;	# compress whitespace in filename
+	$fn =~ s/\s*\.jpe?g$//i;	# remove extension
+d248 7
+a254 2
+	$Photos{$fn} = {
+	    AttachmentName => $fn,
+d256 1
+d267 1
+a267 1
+	my ($category, $artist, $title, $sequence) = ($fn =~ $FILENAME_RE);	
+d269 2
+a270 1
+	$artist ||= '?';
+d273 3
+a275 3
+	unless ($category) {	# invalid filename
+	    push @@{$Photos{$fn}->{Status}},
+		"WARNING: Invalid file name (must be: <Category>-<First Name> <Last Name>-<Title>.jpg)";
+d281 1
+a281 1
+	    push @@{$Photos{$fn}->{Status}},
+d286 1
+a286 1
+	$Photos{$fn}->{JPEG} = $jpegref;
+d295 1
+a295 1
+	    push @@{$Photos{$fn}->{Status}},
+d301 1
+a301 1
+	for (keys %$exif) { $Photos{$fn}->{$_} = $exif->{$_} };
+d304 4
+a307 4
+	    print STDERR "ImageSize:      ", $Photos{$fn}->{ImageSize} || '?', "\n";
+	    print STDERR "ImageWidth:     ", $Photos{$fn}->{ImageWidth} || '?', "\n";
+	    print STDERR "ImageHeight:    ", $Photos{$fn}->{ImageHeight} || '?', "\n";
+	    if ($_ = $Photos{$fn}->{ThumbnailImage}) {
+d315 2
+a316 2
+	my $width = $Photos{$fn}->{ImageWidth} || 0;
+	my $height = $Photos{$fn}->{ImageHeight} || 0;
+d319 1
+a319 1
+	    push @@{$Photos{$fn}->{Status}},
+d326 1
+a326 1
+	    push @@{$Photos{$fn}->{Status}},
+d331 1
+a331 1
+# Validate category
+d334 24
+a357 6
+	unless ($category) {	# invalid category
+	    if (@@Categories > 1) {
+		push @@{$Photos{$fn}->{Status}},
+		    "FAILED: Invalid category (available categories: @@{[join(',', @@Categories)]})";
+		$FailedCount++;
+		next;
+d360 2
+a361 2
+	    push @@{$Photos{$fn}->{Status}},
+		"WARNING: Invalid category (available categories: @@{[join(',', @@Categories)]})";
+a362 1
+	    $category = $Categories[0];
+d365 1
+a365 1
+# Standardize category case and file extension
+d367 3
+a369 7
+	$_ = $title ? "$category-$artist-$title$sequence"
+	    : "$category-$fn";
+	unless (exists $Photos{$_}) {
+	    $Photos{$_} = $Photos{$fn};
+	    delete $Photos{$fn};
+	    $fn = $_;
+	}
+d375 1
+a375 3
+	my $hash = hex(substr(md5_hex($eventYYYYMMDD,$category,$artist,$title || $fn),0,8)) % 10000;
+
+	my $replace = -s "$category/$hash-$fn.jpg";	# replace if file exists
+d378 2
+a379 2
+	unless (open($fh, ">$category/$hash-$fn.jpg"))	{
+	    push @@{$Photos{$fn}->{Status}}, "open FAILED: $!";
+d384 2
+a385 2
+	unless (print $fh ${$Photos{$fn}->{JPEG}}) {
+	    push @@{$Photos{$fn}->{Status}}, "write FAILED: $!";
+d390 1
+a390 1
+	    push @@{$Photos{$fn}->{Status}}, "close FAILED: $!";
+d396 1
+a396 1
+	    push @@{$Photos{$fn}->{Status}}, "Successfully submitted";
+d399 1
+a399 1
+	    push @@{$Photos{$fn}->{Status}}, "Successfully resubmitted";
+d440 3
+a442 3
+foreach my $fn (sort keys %Photos) {
+    foreach my $status (@@{$Photos{$fn}->{Status}}) {
+	$ackText .= "$Photos{$fn}->{AttachmentName}: $status";
+d444 3
+a446 3
+	    $ackText .= " (" . ($Photos{$fn}->{ImageWidth} || '?')
+		. 'w x ' . ($Photos{$fn}->{ImageHeight} || '?') . 'h pixels, '
+		. length(${$Photos{$fn}->{JPEG}}) . " bytes)";
+a449 1
+
+d485 2
+a486 2
+    foreach my $fn (sort keys %Photos) {
+	$ackHTML .= evaluate($tableRow, $fn);
+d512 2
+a513 2
+foreach my $fn (sort keys %Photos) {
+    my $tn = $Photos{$fn}->{ThumbnailImage};
+d520 1
+a520 1
+			  Id => "<$Photos{$fn}->{ThumbnailCid}>",
+d546 4
+a549 1
+B<submitter.pl> [B<-submitdir> I<directory>] [B<-[no]store>] [B<-[no]acknowledge>] [B<-ccack> I<address>] [B<-[no]debug>] I<email message>
+d553 2
+a554 1
+This script is run from procmail to store JPEG photos in a submissions directory and return an acknowledgement email message to the sender.
+d558 3
+a560 1
+	I<Category>C<->I<Artist>C<->I<Title>C<.jpg> (or C<.jpeg>)
+d562 1
+a562 1
+    or
+d564 3
+a566 1
+	I<Category>C<->I<Artist>C<->I<Title>C<->I<N>C< of >I<M>C<.jpg> (or C<.jpeg>)
+d592 2
+a593 1
+Submitted photos must have a maximum long side dimension of 1024 pixels.
+d596 8
+a603 8
+~/submissions/YYYY-MM-DD/Category, where YYYY-MM-DD is the event date
+and Category is the code for the category on that date.  The script
+accepts submissions only for the categories created for the next
+meeting date.  On the day of a meeting, it switches to accepting
+submissions for the next meeting, so the photos for the current
+meeting are frozen and can be copied to a laptop for projection later
+that day.  The script replies with an email message reporting the
+status of the submitted jpegs.
+d607 15
+a621 16
+	PATH=/usr/bin:/usr/local/bin
+	MAILDIR=/var/spool/mail/photochrome.org
+	LOGFILE=$HOME/.procmail.log
+	VERBOSE=yes
+	COMSAT=no
+	PERL5LIB=$HOME/perl/lib
+	CCACK=gorlen@@comcast.net
+
+	:0
+	* ^(To|Cc|X-Forwarded-To):.*submit@@photochrome.org
+	* !^FROM_DAEMON
+	* !^X-Loop: submit@@photochrome.org
+	{
+			:0 h b
+			| $HOME/perl/bin/submitter.pl
+	}
+d625 44
+d671 150
+a820 1
+=head1 DIAGNOSTICS
+d824 2
+a825 1
+Digest::MD5 qw(md5_hex), MIME::Parser, HTML::Entities, Getopt::Long, Time::localtime, Image::ExifTool
+d835 2
+a836 2
+Keith Gorlen
+gorlen@@comcast.net
+@
+
+
+1.4
+log
+@Remove whitespace around -'s in filename.
+Fix format of template evaluation debug printout.
+Check for missing future event subdirectory.
+Accept attachments of any type with .jpg filename.
+Overide or default missing category when only one category available.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.3 2012/06/20 20:47:50 photochr Exp photochr $
+d15 7
+a21 20
+# This script is run from procmail to store JPEG photos in a submissions directory
+# and return an acknowledgement email message to the sender.
+#
+# See http://photochrome.org/club-info/submissions for the submission instructions
+# that this script implements.
+#
+# Specifically, jpeg image attachments are expected to have names of the form:
+#
+#	<Category>-<Artist>-<Title>.jpg
+#
+# where:
+#
+# <Category> is the case-insensitive name of a submissions subdirectory (OP, Pic2, TN, etc.)
+#
+# <Artist> is the first and last name of the photographer
+#
+# <Title> is the photo's title
+#
+# Submitted photos must have a maximum long side dimension of 1024 pixels.
+#
+a22 1
+# $Log: submitter.pl,v $
+d56 1
+a56 1
+my $REV = substr(q$Revision: 1.3 $, 10);
+d58 3
+a60 5
+my $DOMAIN = 'photochrome.org';	# Domain name
+my $USER = 'submit';		# Autoresponder email account name
+my $MAXLONGEDGE = 1024;		# Max long edge of photo in pixels
+my $FILENAME_RE = qr/^\s*([^-]+?)\s*-\s*([^-]+?)\s*-\s*(.+?)\s*\.jpe?g$/i; # Valid full file name RE
+my $FILENAME_ALT_RE = qr/^\s*([^-]+?)\s*-\s*(.+?)\s*\.jpe?g$/i; 	# file name without catergory RE
+d68 2
+d77 1
+d82 1
+a82 1
+				#			Status => error description
+d96 1
+a96 1
+    return substr(md5_hex(time().$AttachCount),0,24)."-$DOMAIN";
+d104 2
+a105 1
+    return encode_entities(shift);
+d114 1
+d116 1
+a116 24
+    $template =~ s/%([0-9A-F]{2})/chr(hex($1))/eg; # decode hex chars
+    $template =~ s/-&gt;/->/g;	# fix deref operators
+
+    if ($DebugOpt) {
+	$_ = $template;
+	while (s/<tt>(.+?)<\/tt>/$1/) {
+	    print STDERR "$1: ", eval $1, "\n";
+	}
+	print STDERR "\n***\n";
+    }
+
+    $template =~ s/<tt>(.+?)<\/tt>/$1/eeg;
+    return $template;
+}
+
+#
+# evalRow -- Format an HTML table row
+#
+
+sub evalRow {
+    my $fn = shift;		# Photo filename
+    my $template = shift;	# table row html template
+
+    my ($category, $artist, $title) = ($fn =~ $FILENAME_RE);	
+d119 3
+a121 4
+    $title ||= $fn;
+
+    $template =~ s/%([0-9A-F]{2})/chr(hex($1))/eg; # decode hex chars
+    $template =~ s/-&gt;/->/g;	# fix deref operators
+d125 2
+a126 2
+	while (s/<tt>(.+?)<\/tt>/$1/) {
+	    print STDERR "$1: ", eval $1, "\n";
+d131 1
+a131 1
+    $template =~ s/<tt>(.+?)<\/tt>/$1/eeg;
+d138 3
+a141 1
+	   "ccack=s",		\@@CcAcksOpt,
+d208 2
+d212 1
+d218 1
+a218 1
+	    Status => '?',
+d222 13
+d237 1
+a237 1
+	    $Photos{$fn}->{Status} =
+d251 1
+a251 1
+	    $Photos{$fn}->{Status} =
+d273 1
+d275 1
+a275 1
+	    $Photos{$fn}->{Status} =
+d281 5
+a285 1
+# Validate filename and category
+d287 1
+a287 12
+	my ($category, $artist, $title) = ($fn =~ $FILENAME_RE);	
+	unless ($category) {	# invalid filename or only category ommitted
+	    ($artist, $title) = ($fn =~ $FILENAME_ALT_RE);	
+	    if ($artist && @@Categories == 1) { # category ommitted, but only one for current event
+		$category = $Categories[0];
+	    } else {		# invalid filename
+		$Photos{$fn}->{Status} =
+		    "FAILED: Invalid file name (must be: <Category>-<First Name> <Last Name>-<Title>.jpg)";
+		$FailedCount++;
+		next;
+	    }
+	}
+d291 2
+a292 4
+	    if (@@Categories == 1) { # override category if only one for current event
+		$category = $Categories[0];
+	    } else {
+		$Photos{$fn}->{Status} =
+d297 5
+d306 3
+a308 1
+	unless (exists $Photos{$_ = "$category-$artist-$title.jpg"}) {
+d316 5
+a320 1
+	my $replace = -s "$category/$fn";	# replace if file exists
+d323 2
+a324 2
+	unless (open($fh, ">$category/$fn"))	{
+	    $Photos{$fn}->{Status} = "open FAILED: $!";
+d330 1
+a330 1
+	    $Photos{$fn}->{Status} = "write FAILED: $!";
+d335 1
+a335 1
+	    $Photos{$fn}->{Status} = "close FAILED: $!";
+d341 1
+a341 1
+	    $Photos{$fn}->{Status} = "Successfully submitted";
+d344 1
+a344 1
+	    $Photos{$fn}->{Status} = "Successfully resubmitted";
+d359 1
+a359 1
+    From => "$USER\@@$DOMAIN",
+d364 1
+a364 1
+    'X-Loop' => "$USER\@@$DOMAIN",
+d379 1
+a379 1
+	"$AttachCount photo(s) attached; $SubmitCount submitted, $ResubmitCount resubmitted, $FailedCount failed\n";
+d386 8
+a393 7
+    $ackText .= "$fn: $Photos{$fn}->{Status}";
+    if ($Photos{$fn}->{Status} =~ /^Success/i) {
+	$ackText .= " (" . ($Photos{$fn}->{ImageWidth} || '?')
+	    . 'w x ' . ($Photos{$fn}->{ImageHeight} || '?') . 'h pixels, '
+	    . length(${$Photos{$fn}->{JPEG}}) . " bytes)\n\n";
+    } else {
+	$ackText .= "\n\n";
+d395 2
+d432 1
+a432 1
+	$ackHTML .= evalRow($fn, $tableRow);
+d484 99
+@
+
+
+1.3
+log
+@Add text/html part to ack message.
+Simplify text/plain ack message.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/Photochrome/RCS/submitter.pl,v 1.2 2012/06/14 20:22:12 photochr Exp photochr $
+d37 4
+d70 1
+a70 1
+my $REV = substr(q$Revision: 1.2 $, 10);
+d75 2
+a76 1
+my $FILENAME_RE = qr/^([^-]+)-([^-]+)-([^.]+)\.jpe?g$/i; # Valid file name RE
+d117 1
+a117 1
+    return encode_entities(shift @@_);
+d133 1
+a133 1
+	    print STDERR "$1", eval $1, "\n";
+d193 2
+d239 2
+a240 2
+    if ($part->effective_type =~ /image\/jpeg/i) {
+	my $fn = $part->head->recommended_filename;
+d300 10
+a309 5
+	unless ($category) {	# invalid filename
+	    $Photos{$fn}->{Status} =
+		"FAILED: Invalid file name (must be: <Category>-<First Name> <Last Name>-<Title>.jpg)";
+	    $FailedCount++;
+	    next;
+d314 8
+a321 4
+	    $Photos{$fn}->{Status} =
+		"FAILED: Invalid category (available categories: @@{[join(',', @@Categories)]})";
+	    $FailedCount++;
+	    next;
+@
+
+
+1.2
+log
+@Implement -ccack option.
+Change debug separator from --- to ***.
+Add summary line to ack email.
+@
+text
+@d6 1
+a6 1
+# $Header: /home/photochr/perl/src/RCS/submitter.pl,v 1.1 2012/06/13 05:09:27 photochr Exp photochr $
+d37 5
+d47 1
+d49 1
+d66 1
+a66 1
+my $REV = substr(q$Revision: 1.1 $, 10);
+d71 1
+d82 13
+d99 66
+d179 2
+a180 2
+    or die "opendir($SubmitDir) failed: $!\n";
+chdir $SubmitDir or die "chdir($SubmitDir) failed: $!\n";
+d188 3
+d194 2
+a195 2
+    or die "opendir($SubmitDir/$eventYYYYMMDD) failed: $!\n";
+chdir "$SubmitDir/$eventYYYYMMDD" or die "chdir($SubmitDir/$eventYYYYMMDD) failed: $!\n";
+d197 1
+a197 1
+my @@categories = grep { !/^\./ && -d $_ } readdir($dh);
+d200 1
+a200 1
+die "No category subdirectories in $SubmitDir/$eventYYYYMMDD\n" unless @@categories;
+d202 1
+a202 1
+print STDERR "Categories in $SubmitDir/$eventYYYYMMDD: ", join(' ', sort @@categories), "\n***\n"
+d218 1
+a218 1
+my $rcvdEntity = $parser->parse(\*STDIN) or die "parse failed\n";
+a229 4
+my %photos;			# $photos{filename} = ref jpeg
+my @@submitted;			# Names of photos successfully submitted
+my @@resubmitted;		# Names of photos successfully resubmitted
+my @@failed;			# Names of photos unsuccessfully submitted
+a233 1
+	$photos{fn} = 0;
+d235 9
+a243 5
+	my ($category, $artist, $title) = ($fn =~ /^([^-]+)-([^-]+)-([^.]+)\.jpe?g$/i);	
+	if (!$category) {	# invalid filename
+	    push @@failed, "$fn: Invalid file name (must be: <Category>-<First Name> <Last Name>-<Title>.jpg)";
+	    next;
+	}
+d245 5
+a249 3
+	($category) = grep(/^$category$/i, @@categories); # So category case matches subdirectory
+	if (!$category) {	# invalid category
+	    push @@failed, "$fn: Invalid category (available categories: @@{[join(',', @@categories)]})";
+d252 1
+a252 3
+
+	$fn = "$category-$artist-$title.jpg";
+	my $jpegref = \$part->bodyhandle->as_string; # Reference to JPEG image
+d257 1
+d260 6
+d267 1
+a267 2
+	$photos{$fn} = $exif;
+	$photos{$fn}->{JPEG} = $jpegref;
+d270 4
+a273 3
+	    print STDERR "ImageWidth:     ", $photos{$fn}->{ImageWidth} || '?', "\n";
+	    print STDERR "ImageHeight:    ", $photos{$fn}->{ImageHeight} || '?', "\n";
+	    if ($_ = $photos{$fn}->{ThumbnailImage}) {
+d281 2
+a282 2
+	my $width = $photos{$fn}->{ImageWidth} || 0;
+	my $height = $photos{$fn}->{ImageHeight} || 0;
+d284 21
+a304 1
+	    push @@failed, "$fn: Longer dimension of ${width}x$height photo exceeds $MAXLONGEDGE";
+d308 8
+d320 17
+a336 4
+	unless (open(FH, ">$category/$fn"))	{ push(@@failed, "$fn open failed: $!"); next };
+	binmode FH;
+	unless (print FH ${$photos{$fn}->{JPEG}}) { push(@@failed, "$fn write failed: $!"); next };
+	unless (close FH)			{ push(@@failed, "$fn close failed: $!"); next };
+d338 3
+a340 2
+	if ($replace) {
+	    push(@@resubmitted, $fn);	# successfully replaced and submitted
+d342 2
+a343 1
+	    push(@@submitted, $fn);	# successfully submitted
+d345 1
+d353 1
+a353 31
+my @@ackLines;
+
+$eventYYYYMMDD =~ /^(\d\d\d\d)-(\d\d)-(\d\d)$/;
+my $eventMMDDYY = "$2/$3/$1";
+
+if (@@submitted || @@resubmitted || @@failed) {
+    push(@@ackLines, @@submitted+@@resubmitted+@@failed . ' photo(s) attached; '
+	. @@submitted . ' submitted; '
+	. @@resubmitted . ' resubmitted; '
+	. @@failed . " failed\n");
+} else {
+    push(@@ackLines, "No JPEG photo attachments found");
+}
+
+push(@@ackLines, "Photos submitted for $eventMMDDYY:",
+     map("  $_ (" . ($photos{$_}->{ImageWidth} || '?') . 'x' . ($photos{$_}->{ImageHeight} || '?') . ' pixels, '
+				      . length(${$photos{$_}->{JPEG}}) . ' bytes)',
+				      @@submitted), '')
+    if @@submitted;
+
+push(@@ackLines, "Photos resubmitted for $eventMMDDYY:",
+     map("  $_ (" . ($photos{$_}->{ImageWidth} || '?') . 'x' . ($photos{$_}->{ImageHeight} || '?') . ' pixels, '
+				      . length(${$photos{$_}->{JPEG}}) . ' bytes)',
+	 @@resubmitted), '')
+    if @@resubmitted;
+
+push(@@ackLines, "Categories available for $eventMMDDYY: @@{[join(' ', @@categories)]}",
+     "Photo submission FAILED:",
+    map("  $_", sort @@failed),
+     '')
+    if @@failed;
+d356 1
+a356 1
+    Type => 'text/plain',
+d363 1
+a363 1
+    Data => [join("\n",@@ackLines), "\n"]);
+d369 97
+a465 1
+$ackEntity->sign(File => "$ENV{HOME}/.signature");
+d469 2
+d476 1
+a476 1
+$ackEntity->smtpsend or die "smtpsend failed: $!\n" if $AckOpt;
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d6 1
+a6 1
+# $Header$
+d36 4
+a39 1
+# $Log$
+d46 3
+d57 1
+a57 1
+		[ -[no]acknowledge ] [ -[no]debug ] [ email ]\n";
+d59 1
+a59 1
+my $REV = substr(q$Revision: 1.0 $, 10);
+d73 1
+d82 1
+d88 1
+d112 1
+a112 1
+print STDERR "Categories in $SubmitDir/$eventYYYYMMDD: ", join(' ', sort @@categories), "\n---\n"
+d132 1
+a132 1
+    print STDERR "\n---\n";
+d180 1
+a180 1
+	    print STDERR "---\n";
+d218 9
+d228 3
+a230 2
+     map("  $_ (@@{[$photos{$_}->{ImageWidth} || '?']}x@@{[$photos{$_}->{ImageHeight} || '?']} pixels, @@{[length(${$photos{$_}->{JPEG}})]} bytes)",
+	 @@submitted), "\n")
+d234 3
+a236 2
+     map("  $_ (@@{[$photos{$_}->{ImageWidth} || '?']}x@@{[$photos{$_}->{ImageHeight} || '?']} pixels, @@{[length(${$photos{$_}->{JPEG}})]} bytes)",
+	 @@resubmitted), "\n")
+d241 2
+a242 2
+     map("  $_", sort @@failed),
+     "\n")
+d245 9
+a253 2
+push(@@ackLines, "No JPEG photo attachments found")
+    unless (@@submitted || @@resubmitted || @@failed);
+d255 1
+a255 7
+my $ackEntity = new MIME::Entity->build(Type => 'text/plain',
+					From => "$USER\@@$DOMAIN",
+					To => $rcvdEntity->head->get('From'),
+					Subject => "Re: @@{[$rcvdEntity->head->get('Subject')]}",
+					References => $rcvdEntity->head->get('Message-ID'),
+					'X-Loop' => "$USER\@@$DOMAIN",
+    					Data => [join("\n",@@ackLines), "\n"]);
+d257 1
+a257 1
+$ackEntity->head->add('Bcc', 'kgorlen@@gmail.com');
+d265 1
+a265 1
+    print STDERR "\n---\n";
+@
